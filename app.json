@@ -1,0 +1,31 @@
+{
+  "pages":[
+    "pages/postlist/postlist",
+    "pages/logs/logs",
+    "pages/publish/publish",
+    "pages/postdetail/postdetail",
+    "pages/authorize/authorize"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#00BFFF",
+    "navigationBarTitleText": "吃瓜群众",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar--暂时不需要": {
+    "selectedColor": "#00BFFF",
+    "list": [
+      {
+        "pagePath": "pages/postlist/postlist",
+        "text": "发现"
+
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的"
+      }
+    ]
+  },
+
+  "cloud": true
+}
