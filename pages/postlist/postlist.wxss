@@ -1,5 +1,13 @@
 /* pages/posts/posts.wxss */
 /*横向布局  */
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 .layout_horizontal{
   height: auto;
   display: flex;
