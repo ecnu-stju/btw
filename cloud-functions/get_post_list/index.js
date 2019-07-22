@@ -4,7 +4,7 @@ const cloud = require('wx-server-sdk')
 cloud.init()
 
 const db = cloud.database({
-  env: "rss-hub-test-898ca3"
+  env: "ecnu-project-50330f"
 })
 
 // 云函数入口函数

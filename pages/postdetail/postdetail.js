@@ -49,7 +49,7 @@ Page({
     var that = this
     /*为什么失败了，小程序端
     const db = wx.cloud.database({
-      env: "rss-hub-test-898ca3"
+      env: "rss-hub-test-898ca3"///ecnu-project-50330f
     })
     const _ = db.command
     const collection = db.collection('post_collection')
