@@ -1,16 +1,16 @@
 {
-  "pages":[
+  "pages": [
     "pages/postlist/postlist",
     "pages/logs/logs",
     "pages/publish/publish",
     "pages/postdetail/postdetail",
     "pages/authorize/authorize"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00BFFF",
     "navigationBarTitleText": "吃瓜群众",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "tabBar--暂时不需要": {
     "selectedColor": "#00BFFF",
@@ -18,7 +18,6 @@
       {
         "pagePath": "pages/postlist/postlist",
         "text": "发现"
-
       },
       {
         "pagePath": "pages/logs/logs",
@@ -26,6 +25,6 @@
       }
     ]
   },
-
-  "cloud": true
+  "cloud": true,
+  "sitemapLocation": "sitemap.json"
 }
