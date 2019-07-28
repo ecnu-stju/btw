@@ -1,0 +1,16 @@
+<!-- 从authorize复制过来 -->
+<view class="section">
+  <view class="flex-wrp" style="flex-direction:row;">
+    <view class="flex-item bc_green">待收货</view>
+    <view class="flex-item bc_red">已收货</view>
+    <view class="flex-item bc_blue">待送达</view>
+    <view class="flex-item bc_yellow">已送达</view>
+  </view>
+</view>
+<view class="section">
+  <view class="flex-wrp" style="flex-direction:column;">
+    <view class="flex-item bc-green">余额</view>
+    <view class="flex-item bc_red">用户反馈</view>
+    <view class="flex-item bc_blue">关于</view>
+  </view>
+</view>
