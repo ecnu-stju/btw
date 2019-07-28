@@ -8,7 +8,7 @@ cloud.init()
  * 一种方法是在小程序端传入环境参数，可以把环境集中在小程序的globalData中管理
  */
 const db = cloud.database({
-  env: "rss-hub-test-898ca3"
+  env: "ecnu-project-50330f"
 })
 
 // 云函数入口函数

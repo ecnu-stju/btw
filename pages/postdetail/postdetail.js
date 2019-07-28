@@ -49,7 +49,7 @@ Page({
     var that = this
     /*为什么失败了，小程序端
     const db = wx.cloud.database({
-      env: "rss-hub-test-898ca3"
+      env: "ecnu-project-50330f"///ecnu-project-50330f、rss-hub-test-898ca3
     })
     const _ = db.command
     const collection = db.collection('post_collection')
@@ -90,6 +90,10 @@ Page({
       },
       fail: console.error
     })
+    ///wx.hideLoading()
+
+
+
     this.setData({
       postid: options.postid
     })
@@ -98,6 +102,7 @@ Page({
     this.refreshComment(options.postid)
 
   },
+  
   /**
    * 从数据库获取图片的fileId，然后去云存储下载，最后加载出来
    */
