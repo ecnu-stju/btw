@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/publish/publish",
     "pages/postdetail/postdetail",
-    "pages/authorize/authorize"
+    "pages/authorize/authorize",
+    "pages/personal center/personal center"
   ],
   "window": {
     "backgroundTextStyle": "light",
