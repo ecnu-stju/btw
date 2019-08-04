@@ -1,0 +1,15 @@
+<view class="container">
+
+ <view class="welcome_text"> 
+   <text>欢迎使用</text>
+   <text>……</text>
+   <text></text>
+   <text></text>
+ </view>
+ <view class="start">
+   <button class="welcome_btn" bindtap='jumpPage' open-type='switchTab'>
+    <image src="../../images/click.png" class="btn_image"></image>
+    <text style="font-size: 50rpx">Start</text>
+   </button>
+  </view>
+</view>

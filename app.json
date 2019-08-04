@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/head/head",
     "pages/postlist/postlist",
     "pages/logs/logs",
     "pages/publish/publish",
@@ -13,7 +14,7 @@
     "navigationBarTitleText": "吃瓜群众",
     "navigationBarTextStyle": "white"
   },
-  "tabBar--暂时不需要": {
+  "tabBar": {
     "selectedColor": "#00BFFF",
     "list": [
       {
@@ -21,7 +22,7 @@
         "text": "发现"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/personal center/personal center",
         "text": "我的"
       }
     ]

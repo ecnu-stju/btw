@@ -1,0 +1,45 @@
+page{
+  background-color: #def3d8;
+}
+
+.welcome_image{
+  width:200rpx;
+  height:200rpx;
+  border-radius: 50%;
+  border:1px solid #000;
+  margin-top:2rpx;
+}
+
+.welcome_text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  box-sizing: border-box;
+  background-size: contain;
+
+}
+
+.start{
+ width: 710rpx;
+ padding: 30rpx 0;
+ position: relative;
+ margin-top: 100rpx;
+}
+.welcome_btn{
+ background-color: transparent;
+ border: 5rpx solid;
+ border-radius: 100rpx;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ width: 500rpx;
+}
+
+.btn_image{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 15rpx;
+}
