@@ -53,6 +53,7 @@
     <view class='send_comment_container'>
         <view class='input-box'>
             <textarea class="textarea" id="inputComment" value='{{comment_value}}' bindinput='input' placeholder="请输入你的看法" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true"/>
+            <!-- 这个textarea的详细情况官方文档有定义 -->
             <view class='send' bindtap='sendComment'>发送</view>
         </view>
     </view>

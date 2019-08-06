@@ -226,6 +226,7 @@ Page({
 
   },
   input: function (e) {//就是this.deta.comment_value应该
+  ///区别与联系：前面页面首次加载时把这个comment_value置空了，以保证不会显示上次的残留，下面读取的也就必然是刚刚输入的新评论
     if (e.detail.value.length >= this.data.maxContentLength) {
       wx.showToast({
         title: '已达到最大字数限制',
