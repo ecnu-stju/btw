@@ -1,4 +1,4 @@
-// pages/publish/publish.js
+// pages/publish/publish.js，发布快递信息
 const app = getApp()
 Page({
 
