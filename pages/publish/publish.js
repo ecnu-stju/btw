@@ -10,7 +10,18 @@ Page({
     content: '',
     clould_img_id_list: [],
     maxContentLength: 1000,
-    minContentLength: 10
+    minContentLength: 10,
+    address: {
+      id: 0,
+      province_id: 0,
+      city_id: 0,
+      district_id: 0,
+      address: '',
+      full_region: '',
+      author_parcel_name: '',
+      mobile: '',
+      is_default: 0
+    },
   },
   /**
    * 生命周期函数--监听页面加载
@@ -29,6 +40,36 @@ Page({
       content: e.detail.value
     })
   },
+  ///
+  bindinputMobile(event) {
+    let address = this.data.address;
+    address.mobile = event.detail.value;
+    this.setData({
+      address: address
+    });
+  },
+  bindinputName(event) {
+    let address = this.data.address;
+    address.author_parcel_name = event.detail.value;
+    this.setData({
+      address: address
+    });
+  },
+  bindinputAddress(event) {
+    let address = this.data.address;
+    address.address = event.detail.value;
+    this.setData({
+      address: address
+    });
+  },
+  bindinputNote(event) {
+    let address = this.data.address;
+    address.note = event.detail.value;
+    this.setData({
+      address: address
+    });
+  },
+  ///
   chooseimage: function () {
     var that = this;
     wx.chooseImage({

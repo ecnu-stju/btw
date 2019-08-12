@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/head/head",
     "pages/postlist/postlist",
+    "pages/head/head",
     "pages/logs/logs",
     "pages/publish/publish",
     "pages/postdetail/postdetail",

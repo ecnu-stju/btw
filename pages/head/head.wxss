@@ -18,7 +18,7 @@ page{
   padding: 100rpx 0;
   box-sizing: border-box;
   background-size: contain;
-
+  font-size:58rpx ;
 }
 
 .start{
