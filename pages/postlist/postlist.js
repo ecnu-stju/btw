@@ -162,8 +162,23 @@ Page({
   },
   onItemClick: function (e) {
     console.log(e.currentTarget.dataset.postid)
-    wx.navigateTo({
-      url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
+    ///
+    wx.showModal({
+      title: '提示',
+      content: '是否确认抢单？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.navigateTo({
+            url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
+    // wx.navigateTo({
+    //   url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
+    // })
   }
 })
