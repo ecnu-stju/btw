@@ -126,11 +126,21 @@ Page({
     wx.cloud.callFunction({
       name: 'publish_post',
       data: {
-        openid: app.globalData.openId,// 这个云端其实能直接拿到
+        openid: app.globalData.openId,// 不是直接含在 event 里的？这个云端其实能直接拿到
         author_name: app.globalData.wechatNickName,
         author_avatar_url: app.globalData.wechatAvatarUrl,
+        //调用这两个都是用全局变量的
         content: this.data.content,
-        image_url: img_url_ok,
+        image_url: img_url_ok,//本地要显示图像，图像是一个链接的形式，链接是可以直接得到的，不用 event 之类的来装
+        pickup_code: this.data.Pickup_code,
+        id: this.data.address.id,
+        city_id: this.data.address.city_id,
+        address: this.datat.address.address,
+        //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到
+        full_region: this.data.address.full_region,
+        author_parcel_name: this.data.address.author_parcel_name,
+        mobile: this.data.address.mobile,
+        is_default: this.data.address.is_default,
         publish_time: "",
         update_time: ""//目前让服务器自己生成这两个时间
       },
