@@ -19,6 +19,7 @@ Page({
       address: '',
       full_region: '',
       author_parcel_name: '',
+      Pickup_code:'',
       mobile: '',
       is_default: 0
     },
@@ -40,7 +41,14 @@ Page({
       content: e.detail.value
     })
   },
-  ///
+  ///Pickup_code
+  bindinputPickup_code(event) {
+    let address = this.data.address;
+    address.Pickup_code = event.detail.value;
+    this.setData({
+      address: address
+    });
+  },
   bindinputMobile(event) {
     let address = this.data.address;
     address.mobile = event.detail.value;
