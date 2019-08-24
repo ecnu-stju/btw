@@ -6,7 +6,8 @@
     "pages/publish/publish",
     "pages/postdetail/postdetail",
     "pages/authorize/authorize",
-    "pages/personal center/personal center"
+    "pages/personal center/order/order",
+    "pages/personal center/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,7 +23,7 @@
         "text": "发现"
       },
       {
-        "pagePath": "pages/personal center/personal center",
+        "pagePath": "pages/personal center/index/index",
         "text": "我的"
       }
     ]
