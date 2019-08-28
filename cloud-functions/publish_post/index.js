@@ -18,6 +18,7 @@ exports.main = async (event, context) => {
         author_name: event.author_name,
         author_avatar_url: event.author_avatar_url,
         pickup_code: event.pickup_code,
+        x: event.x,
         publish_time: Date.now(),
         update_time: Date.now(),
         image_url: event.image_url,//有图像的都要用

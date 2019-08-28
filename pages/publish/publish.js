@@ -21,7 +21,8 @@ Page({
       author_parcel_name: '',
       Pickup_code:'',
       mobile: '',
-      is_default: 0
+      is_default: 0,
+      blockNum:''
     },
   },
   /**
@@ -59,6 +60,13 @@ Page({
   bindinputName(event) {
     let address = this.data.address;
     address.author_parcel_name = event.detail.value;
+    this.setData({
+      address: address
+    });
+  },
+  bindinputBlockNum(event) {
+    let address = this.data.address;
+    address.blockNum = event.detail.value;
     this.setData({
       address: address
     });
@@ -132,19 +140,22 @@ Page({
         //调用这两个都是用全局变量的
         content: this.data.content,
         image_url: img_url_ok,//本地要显示图像，图像是一个链接的形式，链接是可以直接得到的，不用 event 之类的来装
-        pickup_code: this.data.Pickup_code,
+        x:'2',
+        pickup_code: this.data.address.Pickup_code,
         id: this.data.address.id,
-        city_id: this.data.address.city_id,
-        address: this.datat.address.address,
+        // city_id: this.data.address.city_id,
+        address: this.data.address.address,
         //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到
-        full_region: this.data.address.full_region,
-        author_parcel_name: this.data.address.author_parcel_name,
+        // full_region: this.data.address.full_region,
+        full_region: this.data.address.blockNum,
+        author_parcel_name: that.data.address.author_parcel_name,
         mobile: this.data.address.mobile,
         is_default: this.data.address.is_default,
         publish_time: "",
         update_time: ""//目前让服务器自己生成这两个时间
       },
       success: function (res) {
+        /// console.log("flag2")
         // 强制刷新，这个传参很粗暴
         var pages = getCurrentPages();             //  获取页面栈
         var prevPage = pages[pages.length - 2];    // 上一个页面
@@ -157,6 +168,7 @@ Page({
         })
       },
       fail: function(res) {
+        console.log(res)
         that.publishFail('发布失败')
       }
     })
