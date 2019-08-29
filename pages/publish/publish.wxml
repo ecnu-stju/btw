@@ -8,7 +8,8 @@
         </view>
         
         <view class="form-item">
-            <input class="input" value="{{address.full_region}}" disabled="true" bindtap="chooseRegion" placeholder="楼号"/>
+          <input class="input" bindinput="bindinputBlockNum" placeholder="楼号" value="{{address.blockNum}}" auto-focus/>
+            <!--先改简了 <input class="input" value="{{address.full_region}}" disabled="true" bindtap="chooseRegion" placeholder="楼号"/> -->
         </view>
         <view class="form-item">
             <input class="input" bindinput="bindinputPickup_code" placeholder="取货码" value="{{address.Pickup_code}}"/>
