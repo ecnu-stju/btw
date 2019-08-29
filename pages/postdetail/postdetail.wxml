@@ -31,6 +31,9 @@
         <view class='text'>
             <text>详细交接地址：{{detail.address}}</text>
         </view>
+        <view class='text'>
+            <text>备注：（待添加变量）</text>
+        </view>
         <view class='image_area'>
             <view class='image' wx:for='{{imageUrls}}'>
                 <image src='{{item}}' mode='widthFix'></image>
