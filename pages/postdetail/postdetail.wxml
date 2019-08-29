@@ -16,6 +16,21 @@
         <view class='text'>
             <text>{{detail.content}}</text>
         </view>
+        <view class='text'>
+            <text>姓名：{{detail.author_parcel_name}}</text>
+        </view>
+        <view class='text'>
+            <text>楼号：{{detail.full_region}}</text>
+        </view>
+        <view class='text'>
+            <text>取货码：{{detail.pickup_code}}</text>
+        </view>
+        <view class='text'>
+            <text>手机号码：{{detail.mobile}}</text>
+        </view>
+        <view class='text'>
+            <text>详细交接地址：{{detail.address}}</text>
+        </view>
         <view class='image_area'>
             <view class='image' wx:for='{{imageUrls}}'>
                 <image src='{{item}}' mode='widthFix'></image>
