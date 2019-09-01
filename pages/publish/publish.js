@@ -21,6 +21,7 @@ Page({
       author_parcel_name: '',
       Pickup_code:'',
       mobile: '',
+      note:'',
       is_default: 0,
       blockNum:''
     },
@@ -150,7 +151,8 @@ Page({
         full_region: this.data.address.blockNum,
         author_parcel_name: that.data.address.author_parcel_name,
         mobile: this.data.address.mobile,
-        is_default: this.data.address.is_default,
+        //is_default: this.data.address.is_default,
+        note: this.data.address.note,
         publish_time: "",
         update_time: ""//目前让服务器自己生成这两个时间
       },

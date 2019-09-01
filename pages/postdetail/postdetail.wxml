@@ -14,7 +14,7 @@
     </view>
     <view class='content'>
         <view class='text'>
-            <text>{{detail.content}}</text>
+            <text class='author_name'>{{detail.content}}</text>
         </view>
         <view class='text'>
             <text>姓名：{{detail.author_parcel_name}}</text>
@@ -32,7 +32,7 @@
             <text>详细交接地址：{{detail.address}}</text>
         </view>
         <view class='text'>
-            <text>备注：（待添加变量）</text>
+            <text>备注：{{detail.note}}</text>
         </view>
         <view class='image_area'>
             <view class='image' wx:for='{{imageUrls}}'>

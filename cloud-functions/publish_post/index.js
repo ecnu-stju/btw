@@ -34,7 +34,9 @@ exports.main = async (event, context) => {
         full_region: event.full_region,
         author_parcel_name: event.author_parcel_name,
         mobile: event.mobile,
+        note: event.note,
         //is_default: event.address.is_default,
+        status:1,
 
       }
     })
