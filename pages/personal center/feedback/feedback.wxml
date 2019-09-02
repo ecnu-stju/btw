@@ -1,0 +1,9 @@
+<!-- 从authorize复制过来 -->
+<view class='container'>
+  <view class="fb-body">
+    <textarea class="content" placeholder="  请告诉我们你的建议..." />
+    <view class="text-count">0/150</view>
+  </view>
+
+  <button class="fb-btn">提交</button>
+</view>

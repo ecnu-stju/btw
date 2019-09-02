@@ -5,7 +5,8 @@ page{
 }
 .container{
     background: #f4f4f4;
-    height: auto;
+    height:auto;
+    padding-top: 0rpx;
     overflow: hidden;
     width: 100%;
 }
@@ -62,14 +63,14 @@ page{
     width: 100%;
     height: auto;
     overflow: hidden;
-    background: #fff;
+    background: rgb(255, 255, 255);
 }
 
 .user-menu .item{
     float: left;
-    width: 33.1%;
+    width: 33.05%;
     height: 187.5rpx;
-    border-right: 1px solid rgba(0,0,0,.15);
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(0,0,0,.15);
     text-align: center;
 }
@@ -84,11 +85,15 @@ page{
 }
 
 .user-menu .item.no-border {
-    border-right: 0;
+    border-right: 1px solid rgba(0,0,0,.15);
 }
 
 .user-menu .item.item-bottom {
-    border-bottom: none;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.user-menu .item.item-last {
+    border-bottom: 1px solid rgba(0,0,0,.15);
 }
 
 .user-menu .icon{
@@ -104,12 +109,12 @@ page{
     background-size: 52.803rpx;
 }
 
-.user-menu .icon.coupon{
+.user-menu .icon.balance{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -62.4997rpx no-repeat;
     background-size: 52.803rpx;
 }
 
-.user-menu .icon.gift{
+.user-menu .icon.preference{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;
     background-size: 52.803rpx;
 }
@@ -119,18 +124,8 @@ page{
     background-size: 52.803rpx;
 }
 
-.user-menu .icon.security{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -500rpx no-repeat;
-    background-size: 52.803rpx;
-}
-
-.user-menu .icon.kefu{
+.user-menu .icon.aboutus{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -312.5rpx no-repeat;
-    background-size: 52.803rpx;
-}
-
-.user-menu .icon.help{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -250rpx no-repeat;
     background-size: 52.803rpx;
 }
 
@@ -139,15 +134,13 @@ page{
     background-size: 52.803rpx;
 }
 
-
 .user-menu .txt{
     display: block;
     height: 24rpx;
     width: 100%;
     font-size: 24rpx;
-    color:#333;
+    color:rgb(51, 51, 51);
 }
-
 .logout{
     margin-top: 50rpx;
     height: 101rpx;
