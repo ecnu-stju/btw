@@ -1,6 +1,9 @@
 /* pages/posts/posts.wxss */
 /*横向布局  */
 
+/* pages/filterbar/index.wxss */
+@import '../../components/wuxfilterbar.wxss';  
+
 .center {
   margin: 0 auto;
   text-align: center;
