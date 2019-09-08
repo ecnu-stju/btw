@@ -14,12 +14,12 @@ exports.main = async (event, context) => { //已经进入云函数
   return {
     postlist: await db.collection('post_collection').where({
       blockNum: event.blockNum,//event. 本地的楼号名称
-      _id: true,
-      author_name: true,
-      content: true,
-      title: true,
-      watch_count: true,
-      update_time: true
+      // _id: true,
+      // author_name: true,
+      // content: true,
+      // title: true,
+      // watch_count: true,
+      // update_time: true
     }).orderBy('update_time', 'desc').get(),
 
   }
