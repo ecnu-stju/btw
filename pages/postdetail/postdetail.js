@@ -210,7 +210,7 @@ Page({
         postid: this.data.detail._id,
         openid: app.globalData.openId,
         name: app.globalData.wechatNickName,
-        avatarUrl: app.globalData.wechatAvatarUrl,
+        avatarUrl: app.globalData.wechatAvatarUrl,//这几个都放着
         content: this.data.comment
       },
       success: function (res) {

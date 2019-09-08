@@ -62,6 +62,7 @@ Page({
       },
     ],
 
+    blockNum:null,//要初始化的赋值为null
     postlist: null,
     update: false,// 用于发布动态后的强制刷新标记
     userInfo: {},
@@ -104,6 +105,7 @@ Page({
    */
   onLoad: function (options) {
     // 这个工具资瓷日子过滤吗？
+    var that=this //that 在 this 前面；从右到左赋值
     console.log("posts.js - onLoad")
     
     wx.startPullDownRefresh()
@@ -128,6 +130,37 @@ Page({
                 var newarr = arr.split(" ");
                 console.log(typeof params.query);
                 console.log("最终选中的内容为：" + newarr);
+                wx.startPullDownRefresh();//先显示刷新状态
+                wx.cloud.callFunction({
+                  // 云函数名称 
+                  name: 'filter_post_list',//记住换名字
+                  data: {
+                    //postid: this.data.detail._id,
+                    openid: app.globalData.openId,
+                    name: app.globalData.wechatNickName,
+                    avatarUrl: app.globalData.wechatAvatarUrl,//这几个都放着
+                    blockNum: 11 //this.data.blockNum,
+                  },
+                  success: function (res) { // 刷新作用
+                    var data = res.result.postlist.data
+                    for (let i = 0; i < data.length; i++) {
+                      console.log(data[i])
+                      data[i].update_time = util.formatTime(new Date(data[i].update_time))
+                    }
+                    wx.hideLoading()
+                    that.setData({
+                      postlist: data
+                    })
+                    wx.stopPullDownRefresh() //这个 success 的功能：刷新页面的变量
+
+                    wx.hideLoading()
+                    // this that 很迷
+                    // that.refreshComment(that.data.postid)
+                    // that.setData({
+                    //   comment_value: ''
+                    // })
+                  }
+                })
               }
             })
           }
@@ -165,7 +198,7 @@ Page({
 
       },
       fail: function () {
-        that.userInfoAuthorize()
+        that.userInfoAuthorize() //一般进入闭包（{不能用小对象 要改成 that
       }
     })
   },
