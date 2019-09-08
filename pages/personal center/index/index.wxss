@@ -68,14 +68,31 @@ page{
 
 .user-menu .item{
     float: left;
-    width: 33.05%;
-    height: 187.5rpx;
+    width: 100%;
+    height: 100.5rpx;
+    border-right: 0;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    text-align: left;
+}
+
+.user-menu .order{
+    float: left;
+    width: 24.736%;
+    height: 100.05rpx;
     border-right: 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(0,0,0,.15);
     text-align: center;
 }
-
 .user-menu .item .a{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-menu .order .a{
   display: flex;
   width: 100%;
   height: 100%;
@@ -83,7 +100,6 @@ page{
   align-items: center;
   justify-content: center;
 }
-
 .user-menu .item.no-border {
     border-right: 1px solid rgba(0,0,0,.15);
 }
@@ -97,11 +113,11 @@ page{
 }
 
 .user-menu .icon{
-    margin: 0 auto;
+    margin: 16rpx;
     display: block;
     height: 52.803rpx;
     width: 52.803rpx;
-    margin-bottom: 16rpx;
+    margin-bottom: 20rpx;
 }
 
 .user-menu .icon.order{
@@ -136,10 +152,12 @@ page{
 
 .user-menu .txt{
     display: block;
-    height: 24rpx;
+    height: 34rpx;
     width: 100%;
-    font-size: 24rpx;
+    font-size: 32rpx;
     color:rgb(51, 51, 51);
+    align-items: center;
+    justify-content: center;
 }
 .logout{
     margin-top: 50rpx;

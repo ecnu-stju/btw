@@ -9,13 +9,30 @@
   </view>
 
   <view class="user-menu">
-    <view class="item">
-      <navigator url="/pages/personal center/order/order" class="a">
-        <text class="icon order"></text>
-        <text class="txt">我的订单</text>
+    <view class="order">
+      <navigator url="/pages/personal center/receive/receive" class="a">
+        <text class="txt">已收货</text>
+      </navigator>
+    </view>
+
+    <view class="order">
+      <navigator url="/pages/personal center/notreceive/notreceive" class="a">
+        <text class="txt">待收货</text>
+      </navigator>
+    </view>
+
+    <view class="order">
+      <navigator url="/pages/personal center/deliver/deliver" class="a">
+        <text class="txt">已送达</text>
       </navigator>
     </view>
     
+    <view class="order">
+      <navigator url="/pages/personal center/notdeliver/notdeliver" class="a">
+        <text class="txt">待送达</text>
+      </navigator>
+    </view>
+
     <view class="item no-border">
       <navigator url="/pages/personal center/balance/balance" class="a">
         <text class="icon balance"></text>
