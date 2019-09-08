@@ -11,6 +11,7 @@
     "pages/personal center/balance/balance",
     "pages/personal center/preference/preference",
     "pages/personal center/address/address",
+    "pages/personal center/addressAdd/addressAdd",
     "pages/personal center/feedback/feedback",
     "pages/personal center/aboutus/aboutus"
   ],
