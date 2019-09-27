@@ -31,7 +31,7 @@ exports.main = async (event, context) => {
         //address: event.address.address,
         //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到.但是小程序端调用云函数端已经解包完成了，这里直接如下用一个address即可
         address: event.address,
-        full_region: event.full_region,
+        blockNum: event.blockNum,
         author_parcel_name: event.author_parcel_name,
         mobile: event.mobile,
         note: event.note,

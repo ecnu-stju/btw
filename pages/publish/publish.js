@@ -148,7 +148,8 @@ Page({
         address: this.data.address.address,
         //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到
         // full_region: this.data.address.full_region,
-        full_region: this.data.address.blockNum,
+        //full_region: this.data.address.blockNum,
+        blockNum: this.data.address.blockNum,
         author_parcel_name: that.data.address.author_parcel_name,
         mobile: this.data.address.mobile,
         //is_default: this.data.address.is_default,
