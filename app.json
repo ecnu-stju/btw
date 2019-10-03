@@ -25,7 +25,7 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor": "#333333",
+    "selectedColor": "#00BFFF",
     "list": [
       {
         "pagePath": "pages/postlist/postlist",

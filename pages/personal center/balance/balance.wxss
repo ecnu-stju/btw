@@ -11,4 +11,5 @@
 .tips{
   color: gray;
   margin-top: 40rpx;
+  font-size: 30rpx
 }
