@@ -6,11 +6,21 @@
     "pages/publish/publish",
     "pages/postdetail/postdetail",
     "pages/authorize/authorize",
-    "pages/personal center/personal center"
+    "pages/personal center/receive/receive",
+    "pages/personal center/notreceive/notreceive",
+    "pages/personal center/deliver/deliver",
+    "pages/personal center/notdeliver/notdeliver",
+    "pages/personal center/index/index",
+    "pages/personal center/balance/balance",
+    "pages/personal center/preference/preference",
+    "pages/personal center/address/address",
+    "pages/personal center/addressAdd/addressAdd",
+    "pages/personal center/feedback/feedback",
+    "pages/personal center/aboutus/aboutus"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#00BFFF",
+    "navigationBarBackgroundColor": "#333333",
     "navigationBarTitleText": "华师互助取快递平台（内测）",
     "navigationBarTextStyle": "white"
   },
@@ -22,7 +32,7 @@
         "text": "发现"
       },
       {
-        "pagePath": "pages/personal center/personal center",
+        "pagePath": "pages/personal center/index/index",
         "text": "我的"
       }
     ]

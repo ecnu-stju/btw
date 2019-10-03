@@ -1,0 +1,82 @@
+<view class="container">
+  <view class="profile-info">
+    <image bindtap="onUserInfoClick" class="avatar" src="{{userInfo.avatar}}"></image>
+    <view class="info">
+      <text class='name' bindtap='onUserInfoClick'>{{ userInfo.nickname || '点击登录' }}</text>
+      <!-- <text class='level' bindtap='onUserInfoClick'></text> -->
+    </view>
+    <image bindtap="onUserInfoClick" class='btn' src='/static/images/address_right.png'></image>
+  </view>
+
+  <view class="user-menu">
+    <view class="order">
+      <navigator url="/pages/personal center/receive/receive" class="a">
+        <text class="txt">已收货</text>
+      </navigator>
+    </view>
+
+    <view class="order">
+      <navigator url="/pages/personal center/notreceive/notreceive" class="a">
+        <text class="txt">待收货</text>
+      </navigator>
+    </view>
+
+    <view class="order">
+      <navigator url="/pages/personal center/deliver/deliver" class="a">
+        <text class="txt">已送达</text>
+      </navigator>
+    </view>
+    
+    <view class="order">
+      <navigator url="/pages/personal center/notdeliver/notdeliver" class="a">
+        <text class="txt">待送达</text>
+      </navigator>
+    </view>
+
+    <view class="item no-border">
+      <navigator url="/pages/personal center/balance/balance" class="a">
+        <text class="icon balance"></text>
+        <text class="txt">余额</text>
+      </navigator>
+    </view>
+   
+    <view class="item">
+      <navigator url="/pages/personal center/preference/preference" class="a">
+        <text class="icon preference"></text>
+        <text class="txt">我的偏好</text>
+      </navigator>
+    </view>
+
+    <view class="item">
+      <navigator url="/pages/personal center/address/address" class="a">
+        <text class="icon address"></text>
+        <text class="txt">地址管理</text>
+      </navigator>
+    </view>
+    
+    <view class="item item-bottom">
+      <navigator url="/pages/personal center/feedback/feedback" class="a">
+        <text class="icon feedback"></text>
+        <text class="txt">意见反馈</text>
+      </navigator>
+    </view>
+    <view class="item item-last">
+      <navigator url="/pages/personal center/aboutus/aboutus" class="a">
+        <text class="icon aboutus"></text>
+        <text class="txt">关于我们</text>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- <view class="logout" bindtap="exitLogin">退出登录</view> -->
+</view>
+
+<view class='dialog-login' wx:if="{{showLoginDialog}}" bindtap='onCloseLoginDialog'>
+  <view class='dialog-body' catchtap='onDialogBody'>
+    <view class='title'>请选择登录方式</view>
+    <view class='content'>
+      <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信登录</button>
+      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onWechatLogin">手机号登录</button>
+    </view>
+  </view>
+</view>
