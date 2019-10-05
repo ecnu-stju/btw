@@ -1,7 +1,15 @@
 <template name="filterbar">
   <block wx:for="{{ items }}" wx:key="">
     <view bindtap="{{ onClick }}" data-index="{{ index }}">
-      <text class="wux-filterbar__text">{{ item.label }}</text>
+      <!-- <text class="wux-filterbar__text">{{ item.label }}</text> -->
+  <view class="search">
+    <!-- <navigator url="/pages/search/search" class="input"> -->
+      <image class="icon"></image>
+      <text class="txt">搜索, {{ item.label }}</text>
+    <!-- </navigator> -->
+  </view>
+
+
     </view>
   </block>
 
