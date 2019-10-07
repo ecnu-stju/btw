@@ -29,10 +29,14 @@
     "list": [
       {
         "pagePath": "pages/postlist/postlist",
+        "iconPath": "static/images/icon_collect.png",
+        "selectedIconPath": "static/images/icon_collect.png",
         "text": "发现"
       },
       {
         "pagePath": "pages/personal center/index/index",
+        "iconPath": "static/images/ic_menu_me_nor.png",
+        "selectedIconPath": "static/images/ic_menu_me_nor.png",
         "text": "我的"
       }
     ]

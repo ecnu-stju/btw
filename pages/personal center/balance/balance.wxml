@@ -1,6 +1,7 @@
 <!-- 从authorize复制过来 -->
 <view class='container'>
   <text font-size='20rpx'>当前余额: 0.00 元</text>
+  <text font-size='20rpx'>当前信用点: 50   </text>
   <!-- <br> -->
   <text class='tips'>余额刷新可能存在延迟</text>
   <!-- <button class='authorize' type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">获取头像昵称</button>
