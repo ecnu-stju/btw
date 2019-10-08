@@ -1,4 +1,4 @@
-<view class="container ">
+<!-- <view class="container "> -->
   <!-- 交接区域 -->
   <view class="guide" wx:if="{{step === 1}}">
     <text class="headline">交接区域</text>
@@ -38,4 +38,4 @@
       <button class="next" size="mini" type="default" bindtap="goHome">回到首页</button>
     </div>
   </view>
-</view>
+<!-- </view> -->
