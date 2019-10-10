@@ -1,10 +1,16 @@
 // pages/authorize/authorize.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+      step: 1,
+      counterId: '',
+      openid: '',
+      count: null,
+      queryResult: '',
 
   },
 
