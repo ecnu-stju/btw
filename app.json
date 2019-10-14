@@ -21,7 +21,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#333333",
-    "navigationBarTitleText": "华师互助取快递平台（内测）",
+    "navigationBarTitleText": "双轨互助取快递平台(华师内测)",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {

@@ -21,6 +21,17 @@ Page({
 
   },
 
+  prevStep: function () {
+    this.setData({
+      step: this.data.step - 1
+    })
+  },
+  nextStep: function () {
+    this.setData({
+      step: this.data.step + 1
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

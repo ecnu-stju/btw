@@ -56,6 +56,48 @@ Page({
               value: '9',
             },
             ],
+          },
+          {
+            type: 'checkbox',
+            label: 'Query（复选）',
+            value: 'query',
+            children: [{
+              label: '运动',
+              value: '1',
+            },
+            {
+              label: '游戏',
+              value: '2',
+            },
+            {
+              label: '交友',
+              value: '3',
+            },
+            {
+              label: '旅行',
+              value: '4',
+            },
+            {
+              label: '读书',
+              value: '5',
+            },
+            {
+              label: '竞赛',
+              value: '6',
+            },
+            {
+              label: '电影',
+              value: '7',
+            },
+            {
+              label: '音乐',
+              value: '8',
+            },
+            {
+              label: '其他',
+              value: '9',
+            },
+            ],
           }
         ],
         groups: ['001', '002', '003'],//判断元素是否同组
@@ -256,6 +298,16 @@ Page({
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
+          wx.requestPayment({
+            timeStamp: '',
+            nonceStr: '',
+            package: '',
+            signType: 'MD5',
+            paySign: '',
+            success(res) {
+              console.log(res)},
+            fail(res) { console.log(res) }
+          })
         }
       }
     })
