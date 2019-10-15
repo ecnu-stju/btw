@@ -10,7 +10,7 @@ Page({
     content: '',
     clould_img_id_list: [],
     maxContentLength: 1000,
-    minContentLength: 10,
+    minContentLength: 1,
     address: {
       id: 0,
       province_id: 0,

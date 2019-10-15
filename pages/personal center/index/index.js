@@ -15,9 +15,9 @@ Page({
 
   },
   onShow: function() {
-    this.setData({
-      userInfo: app.globalData.userInfo,
-    });
+    // this.setData({
+    //   userInfo: app.globalData.userInfo,
+    // });
   },
   onHide: function() {
     // 页面隐藏

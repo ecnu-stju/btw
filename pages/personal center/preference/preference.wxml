@@ -4,7 +4,7 @@
     <text class="headline">交接区域</text>
     <text class="p">请选择您多数情况下更偏好的快递交接地点</text>
     <button bindtap="1-6">本科生公寓1-6号楼</button>
-    <button bindtap="7-18">本科生公寓7-18号楼</button>
+    <button bindtap="7-18">本科生公寓7-16号楼</button>
     <button bindtap="19-22">本科生公寓19-22号楼</button>
     <button bindtap="library">图书馆</button>
     <button bindtap=" fashanglou">法商楼</button>

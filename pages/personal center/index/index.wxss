@@ -77,7 +77,7 @@ page{
 
 .user-menu .order{
     float: left;
-    width: 24.736%;
+    width: 24.7%;
     height: 100.05rpx;
     border-right: 1px solid rgba(0, 0, 0, 0.15);
     border-bottom: 1px solid rgba(0,0,0,.15);

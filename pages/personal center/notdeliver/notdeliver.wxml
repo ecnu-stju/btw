@@ -1,5 +1,5 @@
 <!-- authorize复制 -->
 <view class='container'>
-  <button bindtap="scan and confirm" type="primary">扫码确认</button>
+  <button bindtap="scan_confirm" type="primary">扫码确认</button>
   <text class='tips'>Tips: 请扫描快件条形码</text>
 </view>

@@ -17,49 +17,80 @@ Page({
         children: [
           {
             type: 'checkbox',
-            label: 'Query（复选）',
+            label: '交接区域（复选）',
             value: 'query',
             children: [{
-              label: '运动',
+              label: '本科1-6号楼',
               value: '1',
             },
             {
-              label: '游戏',
+              label: '本科7-16号楼',
               value: '2',
             },
             {
-              label: '交友',
+              label: '本科19-22号楼',
               value: '3',
             },
             {
-              label: '旅行',
+              label: '图书馆',
               value: '4',
             },
             {
-              label: '读书',
+              label: '法商楼',
               value: '5',
             },
             {
-              label: '竞赛',
+              label: '其他',
               value: '6',
             },
-            {
-              label: '电影',
-              value: '7',
-            },
-            {
-              label: '音乐',
-              value: '8',
-            },
-            {
-              label: '其他',
-              value: '9',
-            },
+            
             ],
           },
           {
             type: 'checkbox',
-            label: 'Query（复选）',
+            label: '交接时间（复选）',
+            value: 'query',
+            children: [{
+              label: '10时-13时',
+              value: '1',
+            },
+            {
+              label: '13时-16时',
+              value: '2',
+            },
+            {
+              label: '16时-19时',
+              value: '3',
+            },
+            {
+              label: '19时-22时',
+              value: '4',
+            },
+            
+            ],
+          },
+          {
+            type: 'checkbox',
+            label: '快件大小（复选）',
+            value: 'query',
+            children: [{
+              label: '小件',
+              value: '1',
+            },
+            {
+              label: '中件',
+              value: '2',
+            },
+            {
+              label: '大件',
+              value: '3',
+            },
+            
+            ],
+          },
+          {
+            type: 'checkbox',
+            label: '类型（开发中）',
             value: 'query',
             children: [{
               label: '运动',
@@ -69,10 +100,7 @@ Page({
               label: '游戏',
               value: '2',
             },
-            {
-              label: '交友',
-              value: '3',
-            },
+
             {
               label: '旅行',
               value: '4',
@@ -81,18 +109,8 @@ Page({
               label: '读书',
               value: '5',
             },
-            {
-              label: '竞赛',
-              value: '6',
-            },
-            {
-              label: '电影',
-              value: '7',
-            },
-            {
-              label: '音乐',
-              value: '8',
-            },
+
+
             {
               label: '其他',
               value: '9',
@@ -289,7 +307,7 @@ Page({
     ///
     wx.showModal({
       title: '提示',
-      content: '是否确认抢单？',
+      content: '是否确认进入抢单页面？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
