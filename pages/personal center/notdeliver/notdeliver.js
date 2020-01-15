@@ -30,7 +30,22 @@ Page({
   },
   scan_confirm: function () {
     wx.scanCode({
-      
+      success: function(res)
+      {
+        // 跳转页面
+        console.log(res['result'])
+        //增加update条码值，进去一层再扫码！
+        
+        // wx.navigateTo({
+        //   url: '../datain/datain?res='+res['result']
+        // })
+      },
+      fail: function(res){
+        var error = '扫码失败'
+        wx.navigateTo({
+          url: '../error/error?error='+error,
+        })
+      }
     })
 
   },

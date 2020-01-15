@@ -80,3 +80,6 @@
     </view>
   </view>
 </view>
+
+<!-- <open-data type="userAvatarUrl"></open-data>
+<open-data type="userGender" lang="zh_CN"></open-data> -->

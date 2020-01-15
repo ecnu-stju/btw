@@ -147,7 +147,7 @@ Page({
         //提取数据
         var data = res.result.postlist.data
         for (let i = 0; i < data.length; i++) {
-          console.log(data[i])
+          // console.log(data[i])
           data[i].update_time = util.formatTime(new Date(data[i].update_time))
         }
         wx.hideLoading()
