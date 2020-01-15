@@ -11,7 +11,7 @@
   <view class="user-menu">
     <view class="order">
       <navigator url="/pages/personal center/receive/receive" class="a">
-        <text class="txt">已收货</text>
+        <text class="txt">全部订单</text>
       </navigator>
     </view>
 
