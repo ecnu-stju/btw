@@ -6,9 +6,18 @@ const app = getApp();
 Page({
   data: {
     userInfo: {},
-    showLoginDialog: false
+    showLoginDialog: false,
+    avt: "",//这里直接调app.globalData.似乎无效/还未初始化
   },
   onLoad: function(options) {
+    // console.log(app.globalData.wechatAvatarUrl)
+    this.setData(
+      { 
+        avt: app.globalData.wechatAvatarUrl
+      }
+    )
+    // console.log(this.data.avt)
+
     // 页面初始化 options为页面跳转所带来的参数
   },
   onReady: function() {

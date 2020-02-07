@@ -1,6 +1,6 @@
 <view class="container">
   <view class="profile-info">
-    <image bindtap="onUserInfoClick" class="avatar" src="{{userInfo.avatar}}"></image>
+    <image bindtap="onUserInfoClick" class="avatar" src="{{avt}}"></image>
     <view class="info">
       <text class='name' bindtap='onUserInfoClick'>{{ userInfo.nickname || '点击认证' }}</text>
       <!-- <text class='level' bindtap='onUserInfoClick'></text> -->
