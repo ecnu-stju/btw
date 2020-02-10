@@ -2,6 +2,14 @@
 /*
 这个页面结构比较复杂，css有许多可以优化的地方
 */
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .title_area{
   display: flex;
