@@ -1,7 +1,7 @@
 
 <import src="../../components/filterbar/filterbar.wxml" />
     <!--这里添加模板：横向导航栏  -->
-
+ 
   
     <template is="filterbar" data="{{ ...$wux.filterbar }}" /> 
 
@@ -12,8 +12,14 @@
     <!--block不能设置css-->
     <view class='post_list' bindtap='onItemClick' data-postid='{{item._id}}'>
         <!--postId会默认转成lowercase-->
+        <view class="profile_info">
+           <open-data type="userAvatarUrl"></open-data>
+        </view>
         <view>
             <text class='title'>{{item.content}}</text>
+        </view>
+        <view>
+            <text class='address'>{{item.address}}</text>
         </view>
         <view class="layout_horizontal">
             <view>
@@ -26,6 +32,6 @@
     </view>
 </block>
 <!--TODO 如何使用MinUI提供的组件库-->
-<image bindtap="chooseimage" class="moment_img new_post" bindtap="newPost" src='../../images/newPost.png'></image>
+<image bindtap="chooseimage" class="moment_img new_post" bindtap="newPost" src='../../images/add3.png'></image>
 <!-- 需要使用 button 来授权登录 -->
 

@@ -12,11 +12,12 @@ exports.main = async (event, context) => {
   return {
     postlist: await db.collection('post_collection').field({
       _id: true,
+      address: true,
       author_name: true,
       content: true,
       title: true,
       watch_count: true,
-      update_time: true
+      update_time: true,
     }).orderBy('update_time', 'desc').get(),
 
   }
