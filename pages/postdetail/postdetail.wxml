@@ -76,3 +76,7 @@
         </view>
     </view>
 </view>
+
+<view class='container'>
+  <button bindtap="scan_confirm" type="primary">确认抢单</button>
+</view>

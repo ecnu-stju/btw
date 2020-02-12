@@ -20,23 +20,23 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#333333",
-    "navigationBarTitleText": "双轨互助取快递平台(华师内测)",
+    "navigationBarBackgroundColor": "#582a0c",
+    "navigationBarTitleText": "BTW(华师内测)",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "selectedColor": "#00BFFF",
+    "selectedColor": "#29335c",
     "list": [
       {
         "pagePath": "pages/postlist/postlist",
-        "iconPath": "static/images/icon_collect.png",
-        "selectedIconPath": "static/images/icon_collect.png",
+        "iconPath": "images/square1.png",
+        "selectedIconPath": "images/selected_square1.png",
         "text": "发现"
       },
       {
         "pagePath": "pages/personal center/index/index",
-        "iconPath": "static/images/ic_menu_me_nor.png",
-        "selectedIconPath": "static/images/ic_menu_me_nor.png",
+        "iconPath": "images/home1.png",
+        "selectedIconPath": "images/selected_home1.png",
         "text": "我的"
       }
     ]
