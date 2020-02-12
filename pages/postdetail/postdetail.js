@@ -225,6 +225,31 @@ Page({
     })
 
   },
+  onClick: function (e) {
+    console.log(e.currentTarget.dataset.postid)
+    ///
+    wx.showModal({
+      title: '提示',
+      content: '是否确认抢单并抵押1积分？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showToast({
+            image: '../../images/warn.png',
+            title: '抢单成功!',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          wx.navigateTo({
+            url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
+          })
+        }
+      }
+    })
+    // wx.navigateTo({
+    //   url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
+    // })
+  },
   input: function (e) {//就是this.deta.comment_value应该
   ///区别与联系：前面页面首次加载时把这个comment_value置空了，以保证不会显示上次的残留，下面读取的也就必然是刚刚输入的新评论
     if (e.detail.value.length >= this.data.maxContentLength) {

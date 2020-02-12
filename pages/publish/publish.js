@@ -130,6 +130,7 @@ Page({
   /**
    * 执行发布时图片已经上传完成，写入数据库的是图片的fileId
    */
+  
   publish: function(img_url_ok) {
     var that = this
     wx.cloud.callFunction({
@@ -186,6 +187,29 @@ Page({
       return
     }
     var that = this;
+
+    wx.showModal({
+      title: '提示',
+      content: '是否确认发布并抵押1积分？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showToast({
+            image: '../../images/warn.png',
+            title: '发布成功!',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          wx.navigateTo({
+            url: '../publish/publish?postid=' + e.currentTarget.dataset.postid,
+          })
+        }
+      }
+    })
+    // wx.navigateTo({
+    //   url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
+    // })
+  
 
     wx.showLoading({
       title: '发布中',
