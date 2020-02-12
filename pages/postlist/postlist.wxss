@@ -2,10 +2,10 @@
 /*横向布局  */
 
 .search {
-  height: 68rpx;/*缩了高度*/
+  height: 80rpx;/*缩了高度*/
   width: 100%;
   padding: 0 30rpx;
-  background: #ffd44d;
+  background: #c8e6c9;
   display: flex;
   align-items: center;
 }
@@ -30,7 +30,7 @@
 .search .txt {
   height: 42rpx;
   line-height: 42rpx;
-  color: #582a0c;
+  color: #76A971;
   padding-left: 10rpx;
   font-size: 30rpx;
 }
@@ -54,9 +54,9 @@
   align-items: center;
 }
 .divLine{
- background: #fff;
+ background: #dadada;
  width: 100%;
- height: 4rpx;
+ height: 2rpx;
 }
 .new_post{
   float: right;
@@ -64,8 +64,8 @@
   bottom: 100rpx;
   right: 100rpx;
   /*border-radius: 500px;*/
-  width: 130rpx;
-  height: 130rpx;
+  width: 110rpx;
+  height: 110rpx;
 }
 
 .post_list{
@@ -76,42 +76,44 @@
 }
 
 .profile_info{
-  width: 16%;
-  height: 16%;
+  padding-top: 35rpx;
+  padding-left: 25rpx;
+  width: 8%;
+  height: 8%;
   display:flex;
   /* flex-wrap: wrap; */
   float:left;
 }
 
 .title{
-  font-size: 12pt;
-  color: #2c2c2c;
+  font-size: 11pt;
+  color: #212121;
   display: -webkit-box;   
   word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;      
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-  padding-left: 15rpx;
+  padding-left: 34rpx;
 }
 
 .address{
-  font-size:10pt;
-  color:#515151;
+  font-size:11pt;
+  color:#757575;
   display: -webkit-box;   
   word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;      
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-  padding-left: 15rpx;
+  padding-left: 34rpx;
 }
 
 .extra_info{
   display: -webkit-box;
   font-size: 10pt;
   width: 650rpx;
-  color: #666a6a;
+  color: #757575;
   overflow: hidden;
   white-space: nowrap;
   text-overflow:ellipsis;
@@ -119,6 +121,6 @@
 .extra_info_start{
   width: 444rpx;
   padding-right: 25rpx;
-  padding-left: 15rpx;
+  padding-left: 34rpx;
 }
 
