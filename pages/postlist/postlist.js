@@ -316,16 +316,16 @@ Page({
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
-          wx.requestPayment({
-            timeStamp: '',
-            nonceStr: '',
-            package: '',
-            signType: 'MD5',
-            paySign: '',
-            success(res) {
-              console.log(res)},
-            fail(res) { console.log(res) }
-          })
+          // wx.requestPayment({
+          //   timeStamp: '',
+          //   nonceStr: '',
+          //   package: '',
+          //   signType: 'MD5',
+          //   paySign: '',
+          //   success(res) {
+          //     console.log(res)},
+          //   fail(res) { console.log(res) }
+          // })
         }
       }
     })
