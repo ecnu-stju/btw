@@ -1,19 +1,11 @@
 /* pages/publish/publish.wxss */
-.btn2{
-  width: 80%;
-  margin-top: 20rpx;
-  background-color: burlywood;
-  color: black;
-  border-radius: 98rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; 
-}
-
-.btn2::after{
-  border-radius: 98rpx;
-  border: 0;
+.send-publish{
+  width: 100%;
+  padding-top: 10rpx;
+  color: #757575;
+  height: 75rpx;
+  background-color: rgba(246,232,154,0.678);
+  line-height: 60rpx;
 }
 .page{
  padding-left: 20rpx;

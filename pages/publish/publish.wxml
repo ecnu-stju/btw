@@ -29,13 +29,14 @@
     </view>
 <!-- /// -->
 
-    <view class="image_content">
+    <!-- <view class="image_content">
         <view class='image' wx:for="{{img_url}}">
             <image class="moment_img" src="{{item}}"></image>
         </view>
         <view class='image' style='display:{{hideAdd?"none":"block"}}'>
             <image bindtap="chooseimage" class="moment_img" src='../../images/add.png'></image>
         </view>
-    </view>
-    <button bindtap="send" class='btn2' open-type='openSetting'>确认发布</button>
+    </view> -->
+    <button class='send-publish' bindtap="send">发布</button>
+
 </view>
