@@ -15,18 +15,25 @@
         <view class="profile_info">
            <open-data type="userAvatarUrl"></open-data>
         </view>
-        <view>
-            <text class='title'>{{item.content}}</text>
-        </view>
-        <view>
+
+        <view class="row2">
+            <image class="icon-2" src='../../images/icon2_1.png'></image>
             <text class='address'>{{item.address}}</text>
         </view>
+
+        <view class="row1">
+            <image class="icon-1" src='../../images/icon1_1.png'></image>
+            <text class='title'>{{item.content}}</text>
+        </view>
+        
         <view class="layout_horizontal">
-            <view>
+            <view class="row3">
+                <image class="icon-3" src='../../images/icon3_1.png'></image>
                 <text class='extra_info extra_info_start'>{{item.author_name}}</text>
             </view>
-            <view>
-                <text class='extra_info watch_count'>{{item.watch_count}}人次浏览</text>
+            <view class="row4">
+                <image class="icon-4" src='../../images/icon4_1.png'></image>
+                <text class='extra_info watch_count'>{{item.watch_count}}</text>
             </view>
         </view>
     </view>

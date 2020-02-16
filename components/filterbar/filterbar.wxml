@@ -4,7 +4,7 @@
       <!-- <text class="wux-filterbar__text">{{ item.label }}</text> -->
   <view class="search">
     <!-- <navigator url="/pages/search/search" class="input"> -->
-      <image class="icon"></image>
+      <image class="icon" src='../../images/search1.png'></image>
       <text class="txt">搜索, {{ item.label }}</text>
     <!-- </navigator> -->
   </view>

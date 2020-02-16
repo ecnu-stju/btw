@@ -10,7 +10,7 @@
             <view class='publish_time'>
                 <text class='publish_time'>发表于{{detail.publish_time}}</text>
             </view>
-        </view>
+        </view> 
     </view>
     <view class='content'>
         <view class='text'>

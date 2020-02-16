@@ -110,7 +110,7 @@ Page({
           for (let i = 0; i < res.tempFilePaths.length; i++) {
             if (img_url.length >= 9) {
               wx.showToast({
-                image: '../../images/warn.png',
+                image: '../../images/warn1.png',
                 title: '图片过多'
               })
               that.setData({
@@ -180,7 +180,7 @@ Page({
   send: function () {
     if (this.data.content.length < this.data.minContentLength) {
       wx.showToast({
-        image: '../../images/warn.png',
+        image: '../../images/warn1.png',
         title: '内容太短!',
       })
       return
@@ -282,7 +282,7 @@ Page({
   },
   publishFail(info) {
     wx.showToast({
-      image: '../../images/warn.png',
+      image: '../../images/warn1.png',
       title: info,
       mask: true,
       duration: 2500
