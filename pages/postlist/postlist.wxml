@@ -13,7 +13,8 @@
     <view class='post_list' bindtap='onItemClick' data-postid='{{item._id}}'>
         <!--postId会默认转成lowercase-->
         <view class="profile_info">
-           <open-data type="userAvatarUrl"></open-data>
+           <!-- <open-data type="userAvatarUrl"></open-data> -->
+           <image src="{{item.author_avatar_url}}"></image>
         </view>
 
         <view class="row2">

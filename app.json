@@ -6,6 +6,7 @@
     "pages/publish/publish",
     "pages/postdetail/postdetail",
     "pages/authorize/authorize",
+    "pages/personal center/orderdetail/orderdetail",
     "pages/personal center/receive/receive",
     "pages/personal center/notreceive/notreceive",
     "pages/personal center/deliver/deliver",
