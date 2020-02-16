@@ -12,7 +12,7 @@
 		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.4.0",
 	"appid": "wxd98e7d772df2ef2c",
 	"projectname": "btw",
 	"debugOptions": {

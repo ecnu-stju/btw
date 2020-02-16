@@ -14,7 +14,7 @@
         <!--postId会默认转成lowercase-->
         <view class="profile_info">
            <!-- <open-data type="userAvatarUrl"></open-data> -->
-           <image height="80rpx" src="{{item.author_avatar_url}}"></image>
+           <image src="{{item.author_avatar_url}}"></image>
         </view>
         <view>
             <text class='title'>{{item.content}}</text>

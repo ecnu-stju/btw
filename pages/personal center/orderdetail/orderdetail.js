@@ -1,4 +1,4 @@
-const util = require('../../utils/util.js');
+const util = require('../../../utils/util.js');
 const app = getApp()
 // pages/personal center/orderdetail/orderdetail.js
 Page({
