@@ -13,6 +13,7 @@ exports.main = async (event, context) => {
     postlist: await db.collection('post_collection').field({
       _id: true,
       address: true,
+      author_avatar_url:true,//upload!!
       author_name: true,
       content: true,
       title: true,

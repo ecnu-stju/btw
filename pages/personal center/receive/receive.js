@@ -2,8 +2,8 @@
 /**
  * 这段是否有必要
  */
-import { $wuxFilterBar } from '../../components/wuxfilterbar';
-const util = require('../../utils/util.js');
+import { $wuxFilterBar } from '../../../components/wuxfilterbar';
+const util = require('../../../utils/util.js');
 
 const app = getApp()        
 Page({

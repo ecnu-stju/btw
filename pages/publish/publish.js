@@ -185,6 +185,13 @@ Page({
       })
       return
     }
+    if (this.data.address.address.length < this.data.minContentLength) {
+      wx.showToast({
+        image: '../../images/warn.png',
+        title: '地址太短!',
+      })
+      return
+    }
     var that = this;
 
     wx.showLoading({
