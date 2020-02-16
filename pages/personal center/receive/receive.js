@@ -1,6 +1,6 @@
 // pages/authorize/authorize.js
 /**
- * 这段是否有比要
+ * 这段是否有必要
  */
 import { $wuxFilterBar } from '../../components/wuxfilterbar';
 const util = require('../../utils/util.js');
@@ -12,6 +12,124 @@ Page({
    * 页面的初始数据
    */
   data: {
+    items: [
+      {
+        type: 'filter',
+        label: '筛选',
+        value: 'filter',
+        children: [
+          {
+            type: 'checkbox',
+            label: '交接区域（复选）',
+            value: 'query',
+            children: [{
+              label: '本科1-6号楼',
+              value: '1',
+            },
+            {
+              label: '本科7-16号楼',
+              value: '2',
+            },
+            {
+              label: '本科19-22号楼',
+              value: '3',
+            },
+            {
+              label: '图书馆',
+              value: '4',
+            },
+            {
+              label: '法商楼',
+              value: '5',
+            },
+            {
+              label: '其他',
+              value: '6',
+            },
+
+            ],
+          },
+          {
+            type: 'checkbox',
+            label: '交接时间（复选）',
+            value: 'query',
+            children: [{
+              label: '10时-13时',
+              value: '1',
+            },
+            {
+              label: '13时-16时',
+              value: '2',
+            },
+            {
+              label: '16时-19时',
+              value: '3',
+            },
+            {
+              label: '19时-22时',
+              value: '4',
+            },
+
+            ],
+          },
+          {
+            type: 'checkbox',
+            label: '快件大小（复选）',
+            value: 'query',
+            children: [{
+              label: '小件',
+              value: '1',
+            },
+            {
+              label: '中件',
+              value: '2',
+            },
+            {
+              label: '大件',
+              value: '3',
+            },
+
+            ],
+          },
+          {
+            type: 'checkbox',
+            label: '类型（开发中）',
+            value: 'query',
+            children: [{
+              label: '运动',
+              value: '1',
+            },
+            {
+              label: '游戏',
+              value: '2',
+            },
+
+            {
+              label: '旅行',
+              value: '4',
+            },
+            {
+              label: '读书',
+              value: '5',
+            },
+
+
+            {
+              label: '其他',
+              value: '9',
+            },
+            ],
+          }
+        ],
+        groups: ['001', '002', '003'],//判断元素是否同组
+      },
+    ],
+
+    postlist: null,
+    update: false,// 用于发布动态后的强制刷新标记
+    userInfo: {},
+    hasUserInfo: false,// 会导致每次加载授权按钮都一闪而过，需要优化
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
 
   },
 
@@ -133,7 +251,7 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.navigateTo({
-            url: '../orderdetail/orderdetail?postid=' + e.currentTarget.dataset.postid,       //只用替换orderdetail？
+            url: '../orderdetail/orderdetail?postid=' + e.currentTarget.dataset.postid,      
           })
         } else if (res.cancel) {
           console.log('用户点击取消')

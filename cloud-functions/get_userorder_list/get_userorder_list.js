@@ -10,14 +10,20 @@ const db = cloud.database({
 // 云函数入口函数
 exports.main = async (event, context) => {
   return {
-    userorder: await db.collection('userorder_collection').field({
+    userorder: await db.collection('post_collection').field({
       _id: true,
       address: true,
       author_name: true,
       content: true,
       title: true,
       update_time: true
-    }).orderBy('update_time', 'desc').get(),
-
+    }).where(_.or([
+      {
+        author_id: event.userInfo.openId  //author_id与当前授权用户id匹配
+      },
+      {
+        //抢单用户id与当前用户id匹配
+      }
+    ])).orderBy('update_time').get(),
   }
 }
