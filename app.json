@@ -6,6 +6,7 @@
     "pages/publish/publish",
     "pages/postdetail/postdetail",
     "pages/authorize/authorize",
+    "pages/personal center/orderdetail/orderdetail",
     "pages/personal center/receive/receive",
     "pages/personal center/notreceive/notreceive",
     "pages/personal center/deliver/deliver",
@@ -20,8 +21,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#582a0c",
-    "navigationBarTitleText": "BTW(华师内测)",
+    "navigationBarBackgroundColor": "#a5d6a7",
+    "navigationBarTitleText": "B T W (华师内测)",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -29,15 +30,15 @@
     "list": [
       {
         "pagePath": "pages/postlist/postlist",
-        "iconPath": "images/square1.png",
-        "selectedIconPath": "images/selected_square1.png",
-        "text": "发现"
+        "iconPath": "images/explore2.png",
+        "selectedIconPath": "images/selected_explore2.png",
+        "text": "Explore"
       },
       {
         "pagePath": "pages/personal center/index/index",
-        "iconPath": "images/home1.png",
-        "selectedIconPath": "images/selected_home1.png",
-        "text": "我的"
+        "iconPath": "images/home2.png",
+        "selectedIconPath": "images/selected_home2.png",
+        "text": "Home"
       }
     ]
   },

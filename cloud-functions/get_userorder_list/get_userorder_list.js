@@ -12,6 +12,7 @@ exports.main = async (event, context) => {
   return {
     userorder: await db.collection('userorder_collection').field({
       _id: true,
+      address: true,
       author_name: true,
       content: true,
       title: true,

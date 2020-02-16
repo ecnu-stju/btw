@@ -497,7 +497,7 @@
   text-align: right;
   font-size: 26rpx;
   line-height: 48rpx;
-  color: #b35866;
+  color: #515151;
 }
 .wux-filterbar__groups {
   overflow: hidden;
@@ -513,7 +513,7 @@
   position: relative;
   height: 64rpx;
   width: 33.3333%;
-  color: #232326;
+  color: #515151;
   margin-top: 20rpx;
   float: left;
   box-sizing: border-box;
@@ -532,9 +532,9 @@
   display: block;
   text-align: center;
   line-height: 64rpx;
-  background-color: #f0f2f5;
+  background-color: rgba(246, 232, 154, 0.349);
   border-radius: 10rpx;
-  border: 2rpx solid #f0f2f5;
+  border: 2rpx solid #F6E89A;
   box-sizing: border-box;
 }
 .wux-filterbar__radio,
@@ -547,9 +547,9 @@
   opacity: 0;
 }
 .wux-filterbar__btn--checked {
-  border-color: #b35866;
-  background-color: #fff;
-  color: #b35866;
+  border-color: #8D4520;
+  background-color: #F6E89A;
+  color: #515151;
 }
 .wux-filterbar__btns {
   height: 88rpx;
@@ -558,7 +558,7 @@
 }
 .wux-filterbar__btns .wux-filterbar__btn {
   background-color: #fff;
-  color: #252525;
+  color: #324654;
   font-size: 32rpx;
   position: relative;
   display: -webkit-box;
@@ -585,8 +585,8 @@
           transform: scaleY(0.5);
 }
 .wux-filterbar__btns .wux-filterbar__btn--danger {
-  background-color: #b35866;
-  color: #fff;
+  background-color: rgba(185, 227, 237, 0.582);
+  color: #536D7A;
 }
 .wux-filterbar__btns .wux-filterbar__btn--danger:before {
   display: none;
