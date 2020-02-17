@@ -18,14 +18,16 @@ page{
   align-items: center;
   justify-content: flex-start;
   padding: 0 30.25rpx;
-  background: #333;
+  background: #c8e6c9;
+  align-content: center
 }
 
 .profile-info .avatar {
   height: 148rpx;
   width: 148rpx;
   border-radius: 50%;
-  border: 4rpx solid #fff;
+  border: 4rpx solid #3C663E;
+  /* padding-left: 25rpx; */
 }
 
 .profile-info .info {
@@ -35,14 +37,17 @@ page{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center
 }
 
 .profile-info .name {
   height: 45rpx;
   line-height: 45rpx;
-  color: #fff;
+  color: #3C663E;
   font-size: 37.5rpx;
-}
+  font-weight: bold;
+  padding-left: 10rpx
+  }
 
 .profile-info .level {
   height: 30rpx;
@@ -55,8 +60,10 @@ page{
 .profile-info .btn {
   width: 50rpx;
   height: 50rpx;
-  margin-left: 10rpx;
-  border-radius: 50%;
+  margin-right: 340rpx;
+  margin-top: 7rpx;
+  /* border-radius: 50%; */
+  /* padding-left: 200rpx; */
 }
 
 .user-menu{
