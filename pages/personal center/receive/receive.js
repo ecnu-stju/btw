@@ -186,7 +186,7 @@ Page({
    */
   onShow: function () {
     var that = this
-    console.log("posts.js - onShow")
+    console.log("receive.js - onShow")
     if (this.data.update) {
       wx.startPullDownRefresh()
       this.refresh()
