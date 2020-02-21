@@ -1,6 +1,5 @@
 const util = require('../../../utils/util.js');
 const app = getApp()
-// pages/personal center/orderdetail/orderdetail.js
 Page({
 
   /**
@@ -9,16 +8,18 @@ Page({
   data: {
     contentLoaded: false,
     imagesLoaded: false,
-    commentLoaded: false,
+    //commentLoaded: false,
     detail: {},
     imageUrls: [],
     inputBoxShow: true,
     maxContentLength: 300,
-    comment: '',
-    comments: [],
+    //comment: '',
+    //comments: [],
     postid: '',
-    comment_value: ''
+    //comment_value: ''
   },
+
+//与postdetail比，应该不用显示评论？==>没有refreshcomment函数
 
   /**
    * 生命周期函数--监听页面加载
@@ -28,13 +29,13 @@ Page({
       title: '加载中',
     })
     var that = this
-
+    //取消了更新浏览次数功能
     // 获取内容
     wx.cloud.callFunction({
       // 云函数名称 
       name: 'get_userorder_detail',
       data: {
-        postid: options.postid  //postid是否要改
+        postid: options.postid 
       },
       success: function (res) {
        //postdetail==>userdetail
@@ -59,6 +60,51 @@ Page({
     // 获取评论
     //this.refreshComment(options.postid)
 
+  },
+
+  /**
+   * 从数据库获取图片的fileId，然后去云存储下载，最后加载出来
+   */
+  downloadImages: function (image_urls) {
+    var that = this
+    if (image_urls.length == 0) {
+      that.setData({
+        imageUrls: [],
+        imagesLoaded: true
+      })
+    } else {
+      var urls = []
+      for (let i = 0; i < image_urls.length; i++) {
+        wx.cloud.downloadFile({
+          fileID: image_urls[i],
+          success: res => {
+            // get temp file path
+            console.log(res.tempFilePath)
+            urls.push(res.tempFilePath)
+            if (urls.length == image_urls.length) {
+              console.log(urls)
+              that.setData({
+                imageUrls: urls,
+                imagesLoaded: true
+              })
+              this.checkLoadFinish()
+            }
+          },
+          fail: err => {
+            // handle error
+          }
+        })
+
+      }
+    }
+    this.checkLoadFinish()
+  },
+
+  checkLoadFinish: function () {
+    if (this.data.contentLoaded
+      && this.data.imagesLoaded) {
+      wx.hideLoading()
+    }
   },
 
   /**

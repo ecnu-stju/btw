@@ -10,7 +10,8 @@ const db = cloud.database({
 exports.main = async (event, context) => {
 
   return {
-    orderdetail: await db.collection('userorder_collection').where({
+    //先用post_collection数据库
+    orderdetail: await db.collection('post_collection').where({
       _id: event.postid
     }).get(),
   }
