@@ -36,34 +36,39 @@
 
     <view class="item no-border">
       <navigator url="/pages/personal center/balance/balance" class="a">
-        <text class="icon balance"></text>
+        <!-- <text class="icon balance"></text> -->
+        <image class="icon-balance" src='../../../images/icon_balance.png'></image>
         <text class="txt">余额</text>
       </navigator>
     </view>
    
     <view class="item">
       <navigator url="/pages/personal center/preference/preference" class="a">
-        <text class="icon preference"></text>
+        <!-- <text class="icon preference"></text> -->
+        <image class="icon-preference" src='../../../images/icon_preference.png'></image>
         <text class="txt">我的偏好</text>
       </navigator>
     </view>
 
     <view class="item">
       <navigator url="/pages/personal center/address/address" class="a">
-        <text class="icon address"></text>
+        <!-- <text class="icon address"></text> -->
+        <image class="icon-address" src='../../../images/icon_address.png'></image>
         <text class="txt">地址管理</text>
       </navigator>
     </view>
     
     <view class="item item-bottom">
       <navigator url="/pages/personal center/feedback/feedback" class="a">
-        <text class="icon feedback"></text>
+        <!-- <text class="icon feedback"></text> -->
+        <image class="icon-feedback" src='../../../images/icon_feedback.png'></image>
         <text class="txt">意见反馈</text>
       </navigator>
     </view>
     <view class="item item-last">
       <navigator url="/pages/personal center/aboutus/aboutus" class="a">
-        <text class="icon aboutus"></text>
+        <!-- <text class="icon aboutus"></text> -->
+        <image class="icon-aboutus" src='../../../images/icon_aboutus.png'></image>
         <text class="txt">关于我们</text>
       </navigator>
     </view>

@@ -132,37 +132,73 @@ page{
     background-size: 52.803rpx ;
 }
 
-.user-menu .icon.balance{
+.user-menu .icon-balance{
+  width: 52.803rpx;
+  height: 52.803rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx
+}
+
+/* .user-menu .icon.balance{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -62.4997rpx no-repeat;
     background-size: 52.803rpx ;
+} */
+
+.user-menu .icon-preference{
+  width: 52.803rpx;
+  height: 52.803rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx
 }
 
-.user-menu .icon.preference{
+/* .user-menu .icon.preference{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;
     background-size: 52.803rpx;
+} */
+
+.user-menu .icon-address{
+  width: 52.803rpx;
+  height: 52.803rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx
 }
 
-.user-menu .icon.address{
+/* .user-menu .icon.address{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 0 no-repeat;
     background-size: 52.803rpx;
+} */
+
+.user-menu .icon-feedback{
+  width: 52.803rpx;
+  height: 52.803rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx
 }
 
-.user-menu .icon.aboutus{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -312.5rpx no-repeat;
-    background-size: 52.803rpx;
-}
-
-.user-menu .icon.feedback{
+/* .user-menu .icon.feedback{
     background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -125rpx no-repeat;
     background-size: 52.803rpx;
+} */
+
+.user-menu .icon-aboutus{
+  width: 52.803rpx;
+  height: 52.803rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx
 }
+
+/* .user-menu .icon.aboutus{
+    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -312.5rpx no-repeat;
+    background-size: 52.803rpx;
+} */
 
 .user-menu .txt{
     display: block;
     height: 34rpx;
     width: 100%;
     font-size: 32rpx;
-    color:rgb(51, 51, 51);
+    font-weight: bold;
+    color:#5e5b5b;
     align-items: center;
     justify-content: center;
 }

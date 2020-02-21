@@ -14,7 +14,7 @@
         <!--postId会默认转成lowercase-->
         <view class="profile_info">
            <!-- <open-data type="userAvatarUrl"></open-data> -->
-           <image src="{{item.author_avatar_url}}"></image>
+           <image src="{{item.author_avatar_url}}" mode="widthFix"></image>
         </view>
 
         <view class="row2">
@@ -27,7 +27,7 @@
             <text class='title'>{{item.content}}</text>
         </view>
         
-        <view class="layout_horizontal">
+        <view class="layout_horizontal">        
             <view class="row3">
                 <image class="icon-3" src='../../images/icon3_1.png'></image>
                 <text class='extra_info extra_info_start'>{{item.author_name}}</text>

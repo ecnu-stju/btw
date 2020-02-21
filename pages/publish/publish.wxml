@@ -1,5 +1,5 @@
 <view class='page'>
-    <textarea class='text' bindinput="input" placeholder="快递简要描述，不少于{{minContentLength}}字" maxlength='{{maxContentLength}}' show-confirm-bar='false' auto-height/>
+    <textarea class='text' bindinput="input" placeholder="快递简要描述，不少于{{minContentLength}}字" maxlength='{{maxContentLength}}' show-confirm-bar='false' auto-height/> 
 
 <!-- /// -->
     <view class="add-form">

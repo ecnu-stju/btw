@@ -83,15 +83,16 @@
 
 .message-content{
   font-size: 12pt;
-  color:#757575;
+  color:#757575; 
 }
 
 .send-publish{
   width: 100%;
-  padding-top: 10rpx;
+  padding-top: 7rpx;
   color: #444343;
   height: 75rpx;
   background-color: #E3BD4A;
+  border: 2px solid rgba(141, 68, 32, 0.767);
   line-height: 60rpx;
   font-weight: bold
 }

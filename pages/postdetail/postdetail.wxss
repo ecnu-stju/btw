@@ -1,7 +1,25 @@
 /* pages/postdetail/postdetail.wxss */
-/*
+/* 
 这个页面结构比较复杂，css有许多可以优化的地方
 */
+.postdetail{
+ padding-left: 25rpx;
+ padding-right: 25rpx;
+ padding-top: 50rpx;
+ 
+}
+
+.text{
+ width: 100%;
+ margin-bottom: 3px;
+ font-size: 12pt;
+ font-weight: bold;
+ padding-left: 25rpx;
+ padding-right: 25rpx;
+ padding-bottom: 25rpx;
+ color: #5e5b5b;
+ 
+}
 .container{
   width: 100%;
   height: 100%;
@@ -9,6 +27,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 5rpx;
+
+}
+
+.btn1{
+  
+  font-size:12pt;
+  width: 92%;
+  height:80rpx;
+  background-color: #E3BD4A;
+  border: 2px solid rgba(141, 68, 32, 0.767);
+  color: #444343;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .title_area{
@@ -117,9 +154,9 @@ border-radius: 4rpx;
 
 .send {
  width: 116rpx;
-height: 64rpx;
-line-height: 64rpx;
-text-align: center;
-color: #66CC00;
+ height: 64rpx;
+ line-height: 64rpx;
+ text-align: center;
+ color: #3C663E;
 
 }
