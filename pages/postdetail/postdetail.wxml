@@ -31,7 +31,7 @@
         <view class='text'>
             <text>详细交接地址：{{detail.address}}</text>
         </view>
-        <view class='text'>
+        <view class='text-count'>
             <text>备注：{{detail.note}}</text>
         </view>
         <view class='image_area'>
@@ -39,9 +39,9 @@
                 <image src='{{item}}' mode='widthFix'></image>
             </view>
         </view>
-      <view class="container">
+      <!-- <view class="container"> -->
           <button bindtap="onClick" class="btn1" open-type="openSetting">确认抢单</button>
-      </view>
+      <!-- </view> -->
     </view>
     <view style='background: red' wx:if='{{false}}'>数据展示区：浏览数，关注数，评论数等等</view>
     <view class='all_comment' style='background: #EDEDED' wx:if='{{imagesLoaded}}'>
