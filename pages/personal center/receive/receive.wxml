@@ -5,14 +5,14 @@
   
     <template is="filterbar" data="{{ ...$wux.filterbar }}" /> 
 
-<block wx:key="{{postlist}}">
+<block wx:for="{{userorder_list}}" wx:if="{{ userorder_list.length > 0 }}">
     <view class="divLine"></view>
     <!--block不能设置css-->
     <view class='post_list' bindtap='onItemClick' data-postid='{{item._id}}'>
         <!--postId会默认转成lowercase-->
         <view class="profile_info">
            <!-- <open-data type="userAvatarUrl"></open-data> -->
-           <image src="{{item.author_avatar_url}}"></image>
+           <image src="{{item.author_avatar_url}}" mode="widthFix"></image>
         </view>
 
         <view class="row2">
@@ -25,11 +25,20 @@
             <text class='title'>{{item.content}}</text>
         </view>
         
-        <view class="layout_horizontal">
+        <view class="layout_horizontal">        
             <view class="row3">
                 <image class="icon-3" src='../../../images/icon3_1.png'></image>
                 <text class='extra_info extra_info_start'>{{item.author_name}}</text>
             </view>
+            <view class="row4">
+                <image class="icon-4" src='../../../images/icon4_1.png'></image>
+                <text class='extra_info watch_count'>{{item.watch_count}}</text>
+            </view>
         </view>
+        
     </view>
 </block>
+
+<view class="empty-view" wx:if="{{ userorder_list.length <= 0 }}">
+    <text class="text">您没有相关订单</text>
+</view>

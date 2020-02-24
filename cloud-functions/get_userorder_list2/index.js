@@ -9,25 +9,26 @@ const db = cloud.database({
 
 // 云函数入口函数
 //s_number用来判定应该显示哪一状态的订单（是否可行）
-exports.main = async (event, context, s_number) => {
+exports.main = async (event, context) => {
   return {
     userorder: await db.collection('post_collection').field({
       _id: true,
       address: true,
       author_name: true,
-      deliverer_name: true,  
+      deliverer_name: true,
       content: true,
       title: true,
       update_time: true
     }).where(_.or([
       {
-        author_id: event.userInfo.openId  //author_id与当前授权用户id匹配
-        status: event.status //匹配订单的状态。数据库目前没有status状态数据。
+        author_id: event.user_openid,  //author_id与当前授权用户id匹配
       },
       {
-        deliverer_id: event.userInfo.openId//抢单用户id与当前用户id匹配
-        status: event.status
+        author_parcel_name: event.user_name,//抢单用户id与当前用户id匹配
       }
-    ])).orderBy('update_time').get(),
+    ])).and([{
+      status: event.status
+    }]).orderBy('update_time').get(),
   }
 }
+
