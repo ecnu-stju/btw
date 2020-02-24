@@ -129,8 +129,7 @@ Page({
     update: false,// 用于发布动态后的强制刷新标记
     userInfo: {},
     hasUserInfo: false,// 会导致每次加载授权按钮都一闪而过，需要优化
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    status: 3
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
 
   },
 
@@ -150,6 +149,11 @@ Page({
       // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
       //待修改云函数（与授权用户id匹配后显示）  模仿get_post_list
       name: 'get_userorder_list2',
+      data:{
+        status: 3,
+        user_openid: app.globalData.openId,
+        user_name: app.globalData.wechatNickName
+      },
       success: function (res) {   //*res的内容？
         //提取数据
         var data = res.result.postlist.data   //还是postlist吗？
