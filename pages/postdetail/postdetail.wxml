@@ -20,7 +20,7 @@
             <text>姓名：{{detail.author_parcel_name}}</text>
         </view>
         <view class='text'>
-            <text>楼号：{{detail.full_region}}</text>
+            <text>投递区域：{{detail.full_region}}</text>
         </view>
         <view class='text'>
             <text>取货码：{{detail.pickup_code}}</text>
