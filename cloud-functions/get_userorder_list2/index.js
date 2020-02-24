@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
         author_id: event.user_openid,  //author_id与当前授权用户id匹配
       },
       {
-        author_parcel_name: event.user_name,//抢单用户id与当前用户id匹配
+        deliverer_id: event.user_openid,//抢单用户id与当前用户id匹配
       }
     ])).and([{
       status: event.status

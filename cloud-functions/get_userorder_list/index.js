@@ -19,8 +19,13 @@ exports.main = async (event, context) => {
       content: true,
       title: true,
       update_time: true
-    }).where(
-        author_id== event.user_openid  //author_id与当前授权用户id匹配
-     ).orderBy('update_time').get(),
+    }).where(_.or([
+      {
+        author_id: event.user_openid  //author_id与当前授权用户id匹配
+      },
+      {
+        deliverer_id: event.user_openid
+      }
+    ])).orderBy('update_time').get(),
   }
 }
