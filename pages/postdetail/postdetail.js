@@ -68,7 +68,7 @@ Page({
         postid: options.postid
       },
       success: function (res) {
-        console.log('更新成功')
+        console.log('更新浏览次数成功')
       }
     })
 
@@ -226,11 +226,11 @@ Page({
 
   },
   onClick: function (e) {
-    console.log(e.currentTarget.dataset.postid)
+    // console.log(e.currentTarget.dataset.postid)
     ///
     wx.showModal({
       title: '提示',
-      content: '是否确认抢单并抵押1积分？',
+      content: '是否确认抢单并抵押0.1积分？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
@@ -240,15 +240,13 @@ Page({
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
-          wx.navigateTo({
-            url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
-          })
+          // wx.navigateTo({
+          //   url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
+          // }) //这里不该有，是用于postlist进detail时、传那一单的id
         }
       }
     })
-    // wx.navigateTo({
-    //   url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
-    // })
+
   },
   input: function (e) {//就是this.deta.comment_value应该
   ///区别与联系：前面页面首次加载时把这个comment_value置空了，以保证不会显示上次的残留，下面读取的也就必然是刚刚输入的新评论

@@ -194,65 +194,107 @@ Page({
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
+
+          wx.showLoading({
+            title: '发布中',
+            mask: true
+          })
+
+          let img_url = that.data.img_url;
+          let img_url_ok = [];
+          //由于图片只能一张一张地上传，所以用循环
+          if (img_url.length == 0) {
+            that.publish([])
+            return
+          }
+          for (let i = 0; i < img_url.length; i++) {
+            var str = img_url[i];
+            var obj = str.lastIndexOf("/");
+            var fileName = str.substr(obj + 1)
+            console.log(fileName)
+            wx.cloud.uploadFile({
+              cloudPath: 'post_images/' + fileName,//必须指定文件名，否则返回的文件id不对
+              filePath: img_url[i], // 小程序临时文件路径
+              success: res => {
+                // get resource ID: 
+                console.log(res)
+                //把上传成功的图片的地址放入数组中
+                img_url_ok.push(res.fileID)
+
+                //如果全部传完，则可以将图片路径保存到数据库
+
+                if (img_url_ok.length == img_url.length) {
+                  console.log(img_url_ok)
+                  that.publish(img_url_ok)
+
+                }
+
+              },
+              fail: err => {
+                // handle error
+                that.publishFail('图片上传失败')
+                console.log('fail: ' + err.errMsg)
+              }
+            })
+          }  
+          
           wx.showToast({
             image: '../../images/warn.png',
             title: '发布成功!',
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
-          wx.navigateTo({
-            url: '../publish/publish?postid=' + e.currentTarget.dataset.postid,
-          })
+          // wx.navigateTo({
+          //   url: '../publish/publish?postid=' + e.currentTarget.dataset.postid,
+          // }) //这里不该有，是用于postlist进detail时、传那一单的id
         }
       }
     })
-    // wx.navigateTo({
-    //   url: '../postdetail/postdetail?postid=' + e.currentTarget.dataset.postid,
-    // })
+
   
 
-    wx.showLoading({
-      title: '发布中',
-      mask: true
-    })
+    // wx.showLoading({
+    //   title: '发布中',
+    //   mask: true
+    // })
 
-    let img_url = that.data.img_url;
-    let img_url_ok = [];
-    //由于图片只能一张一张地上传，所以用循环
-    if (img_url.length == 0) {
-      this.publish([])
-      return
-    }
-    for (let i = 0; i < img_url.length; i++) {
-      var str = img_url[i];
-      var obj = str.lastIndexOf("/");
-      var fileName = str.substr(obj + 1)
-      console.log(fileName)
-      wx.cloud.uploadFile({
-        cloudPath: 'post_images/' + fileName,//必须指定文件名，否则返回的文件id不对
-        filePath: img_url[i], // 小程序临时文件路径
-        success: res => {
-          // get resource ID: 
-          console.log(res)
-          //把上传成功的图片的地址放入数组中
-          img_url_ok.push(res.fileID)
+    // let img_url = that.data.img_url;
+    // let img_url_ok = [];
+    // //由于图片只能一张一张地上传，所以用循环
+    // if (img_url.length == 0) {
+    //   this.publish([])
+    //   return
+    // }
+    // for (let i = 0; i < img_url.length; i++) {
+    //   var str = img_url[i];
+    //   var obj = str.lastIndexOf("/");
+    //   var fileName = str.substr(obj + 1)
+    //   console.log(fileName)
+    //   wx.cloud.uploadFile({
+    //     cloudPath: 'post_images/' + fileName,//必须指定文件名，否则返回的文件id不对
+    //     filePath: img_url[i], // 小程序临时文件路径
+    //     success: res => {
+    //       // get resource ID: 
+    //       console.log(res)
+    //       //把上传成功的图片的地址放入数组中
+    //       img_url_ok.push(res.fileID)
 
-          //如果全部传完，则可以将图片路径保存到数据库
+    //       //如果全部传完，则可以将图片路径保存到数据库
 
-          if (img_url_ok.length == img_url.length) {
-            console.log(img_url_ok)
-            that.publish(img_url_ok)
+    //       if (img_url_ok.length == img_url.length) {
+    //         console.log(img_url_ok)
+    //         that.publish(img_url_ok)
 
-          }
+    //       }
 
-        },
-        fail: err => {
-          // handle error
-          that.publishFail('图片上传失败')
-          console.log('fail: ' + err.errMsg)
-        }
-      })
-    }  
+    //     },
+    //     fail: err => {
+    //       // handle error
+    //       that.publishFail('图片上传失败')
+    //       console.log('fail: ' + err.errMsg)
+    //     }
+    //   })
+    // }  
     
   },
 
