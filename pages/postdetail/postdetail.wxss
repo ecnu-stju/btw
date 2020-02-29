@@ -65,6 +65,22 @@
 
 }
 
+.btn1{
+  width: 80%;
+  margin-top: 20rpx;
+  background-color: burlywood;
+  color: black;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+}
+
+.btn1::after{
+  border-radius: 98rpx;
+  border: 0;
+}
 .title_area{
   display: flex;
   flex-direction: row;
