@@ -1,4 +1,12 @@
 /* pages/publish/publish.wxss */
+.send-publish{
+  width: 100%;
+  padding-top: 10rpx;
+  color: #757575;
+  height: 75rpx;
+  background-color: rgba(246,232,154,0.678);
+  line-height: 60rpx;
+}
 .page{
  padding-left: 25rpx;
  padding-right: 25rpx;

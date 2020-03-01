@@ -68,7 +68,7 @@ Page({
         postid: options.postid
       },
       success: function (res) {
-        console.log('更新成功')
+        console.log('更新浏览次数成功')
       }
     })
 
@@ -221,6 +221,29 @@ Page({
         that.setData({
           comment_value: ''
         })
+      }
+    })
+
+  },
+  onClick: function (e) {
+    // console.log(e.currentTarget.dataset.postid)
+    ///
+    wx.showModal({
+      title: '提示',
+      content: '是否确认抢单并抵押0.1积分？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showToast({
+            image: '../../images/warn.png',
+            title: '抢单成功!',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          // wx.navigateTo({
+          //   url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
+          // }) //这里不该有，是用于postlist进detail时、传那一单的id
+        }
       }
     })
 
