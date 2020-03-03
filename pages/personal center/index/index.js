@@ -11,65 +11,16 @@ Page({
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
 
-// function myrequest(operation, data={}, method="GET") {
-    //   // 向法商楼发送一个不管死活的请求
-    //   // operation是个字符串，代表你想干的操作
-    //   // makeUrl把operation变成url
-    //   // makeName把operation变成云函数名称
-    //   util.request("https://www.google.com.hk/", data, method).then(res => {
-    //     console.log("法商楼ok")
-    //     console.log(res)
-    //   }).catch(err => {
-    //     console.log("法商楼gg")
-    //     console.log(err)
-    //   })
-    //   return new Promise((res, rej) => {
-    //     wx.cloud.callFunction({
-    //       name: 'get_post_list',
-    //     }).then(r => res(r)).catch(r => rej(r))})
-    //   }
-
     wx.cloud.init({
       traceUser: true
     })
 
-    app.myrequest("ceshi").then(res => {
+    util.myrequest("ceshi", data={}, method="GET").then(res => {
       console.log("云ok")
     }).catch(err => {
       console.log(err)
     })
 
-    function f1(){
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {resolve("成功1000")}, 1000)
-      })
-    }
-    function ff1(){
-      return new Promise((res, rej)=>{
-        f1().then(r=>res(r))
-      })
-    }
-    // ff1().then(res=>console.log(res))
-    function f2(){
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {resolve("成功2000")}, 5000)
-      })
-    } 
-    // function f3(){
-    //   return new Promise((resolve, reject) => {
-    //     reject("失败3")
-    //   })
-    // } 
-
-    // f1().then((res, rej) => {console.log(res)})
-    // f2().then((res, rej) => {console.log(res)})
-    // f3().then((res, rej) => {console.log(res)})
-
-    // f1().then((res, rej) => {
-    //   console.log(res)
-    // }).then(f2).then((res, rej) => {
-    //   console.log(res)
-    // }).then(f3)
   },
   onReady: function() {
 

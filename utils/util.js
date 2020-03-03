@@ -161,6 +161,40 @@ function showErrorToast(msg) {
   })
 }
 
+function makeUrl(operation){
+  let url = operation
+  url = "https://www.google.com.hk/" // 不翻墙的情况下，测试
+  return url
+}
+
+function makeName(operation){
+  let name = operation
+  name = "get_post_list" // 测试
+  return name
+}
+
+function myrequest(operation, data={}, method) {
+  // operation是个字符串，代表你想干的操作
+  // makeUrl把operation变成url
+  // makeName把operation变成云函数名称
+  // method你加个默认值，不知道你用哪个
+
+  // 向法商楼发送一个不管死活的请求
+  request(makeUrl(operation), data, method).then(res => {
+    console.log("法商楼ok")
+    console.log(res)
+  }).catch(err => {
+    console.log("法商楼gg")
+    console.log(err)
+  })
+  // 这里返回云函数promise
+  return new Promise((res, rej) => {
+    wx.cloud.callFunction({
+      name: makeName(operation)
+    }).then(r => res(r)).catch(r => rej(r))
+  })
+}
+
 module.exports = {
   formatTime,
   request,
@@ -171,6 +205,7 @@ module.exports = {
   checkSession,
   login,
   getUserInfo,
+  myrequest
 }
 
 
