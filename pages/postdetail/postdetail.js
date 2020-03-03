@@ -209,6 +209,7 @@ Page({
       data: {
         postid: this.data.detail._id,
         openid: app.globalData.openId,
+        //原轮子作者埋坑了，本地该值本为undefined，云函数里用的是自动产生的，现已基本将本地坑在postlist页的云函数里集成填了，但仍有缺憾
         name: app.globalData.wechatNickName,
         avatarUrl: app.globalData.wechatAvatarUrl,
         content: this.data.comment

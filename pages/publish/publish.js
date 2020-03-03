@@ -246,8 +246,9 @@ Page({
           }  
           
           wx.showToast({
-            image: '../../images/warn.png',
+            icon: 'success',
             title: '发布成功!',
+            duration: 2000
           })
         } else if (res.cancel) {
           console.log('用户点击取消')

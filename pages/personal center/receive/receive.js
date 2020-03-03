@@ -140,12 +140,20 @@ Page({
     var that = this
     wx.showLoading({
       title: '加载中',
+<<<<<<< HEAD
     })
     wx.cloud.init({
         traceUser: true
     })
     console.log(app.globalData.openId)
     console.log('加载云函数')
+=======
+    });
+    wx.cloud.init({
+      traceUser: true
+    })
+     console.log('加载云函数')
+>>>>>>> b95df270f4f20f9c6651d726faaf9818cc8c3f4c
       wx.cloud.callFunction({
         // 云函数名称
         // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
