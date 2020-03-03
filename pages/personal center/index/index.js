@@ -15,7 +15,7 @@ Page({
       traceUser: true
     })
 
-    util.myrequest("ceshi", data={}, method="GET").then(res => {
+    util.myrequest("ceshi", {}, "GET").then(res => {
       console.log("云ok")
     }).catch(err => {
       console.log(err)
