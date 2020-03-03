@@ -188,11 +188,9 @@ function myrequest(operation, data={}, method) {
     console.log(err)
   })
   // 这里返回云函数promise
-  return new Promise((res, rej) => {
-    wx.cloud.callFunction({
-      name: makeName(operation)
-    }).then(r => res(r)).catch(r => rej(r))
-  })
+  return wx.cloud.callFunction({
+        name: makeName(operation)
+      })
 }
 
 module.exports = {
