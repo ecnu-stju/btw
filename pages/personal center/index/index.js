@@ -24,6 +24,9 @@ Page({
 
   },
   onShow: function() {
+
+    console.log(app.globalData.openId)//缺点：刚进来点太快则没法显示
+
     // this.setData({
     //   userInfo: app.globalData.userInfo,
     // });

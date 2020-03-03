@@ -154,6 +154,7 @@ Page({
         that.setData({
           postlist: data
         })
+        app.globalData.openId = res.result.openId//这里调用了云函数之后，globalData.openId变量才能使用，不足，在本页的onload、onshow（等）区域内尚且无法使用globalData.openId，貌似因为异步调云函数没那么快？
         wx.stopPullDownRefresh()
       },
       fail: console.error

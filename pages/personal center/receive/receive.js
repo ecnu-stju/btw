@@ -140,7 +140,10 @@ Page({
     var that = this
     wx.showLoading({
       title: '加载中',
-    }),
+    });
+    wx.cloud.init({
+      traceUser: true
+    })
      console.log('加载云函数')
       wx.cloud.callFunction({
         // 云函数名称
