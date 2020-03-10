@@ -3,14 +3,15 @@
   <view class="guide" wx:if="{{step === 1}}">
     <text class="headline">交接区域</text>
     <text class="p">请选择您多数情况下更偏好的快递交接地点</text>
-    <button bindtap="1-6">本科生公寓1-6号楼</button>
-    <button bindtap="7-18">本科生公寓7-16号楼</button>
-    <button bindtap="19-22">本科生公寓19-22号楼</button>
-    <button bindtap="library">图书馆</button>
-    <button bindtap=" fashanglou">法商楼</button>
-    <button bindtap="others">其他</button>
+    <!-- 按钮前加个图标或许会好看点 -->
+    <button bindtap="1-6" class="type1">本科生公寓1-6号楼</button>
+    <button bindtap="7-18" class="type1">本科生公寓7-16号楼</button>
+    <button bindtap="19-22" class="type1">本科生公寓19-22号楼</button>
+    <button bindtap="library" class="type1">图书馆</button>
+    <button bindtap=" fashanglou" class="type1">法商楼</button>
+    <button bindtap="others" class="type1">其他</button>
     <div class="nav">
-      <button class="next" size="mini" type="default" bindtap="nextStep">下一步</button>
+      <button class="next" size="mini"  bindtap="nextStep">下一步</button>
     </div>
   </view>
 
@@ -18,10 +19,10 @@
   <view class="guide" wx:if="{{step === 2}}">
     <text class="headline">交接时间</text>
     <text class="p">请选择更偏好的快递交接时间</text>
-    <button bindtap="10-13">10时-13时</button>
-    <button bindtap="13-16">13时-16时</button>
-    <button bindtap="16-19">16时-19时</button>
-    <button bindtap="19-22">19时-22时</button>
+    <button bindtap="10-13" class="type1">10时-13时</button>
+    <button bindtap="13-16" class="type1">13时-16时</button>
+    <button bindtap="16-19" class="type1">16时-19时</button>
+    <button bindtap="19-22" class="type1">19时-22时</button>
     <div class="nav">
       <button class="prev" size="mini" type="default" bindtap="prevStep">上一步</button>
       <button class="next" size="mini" type="default" bindtap="nextStep">下一步</button>
@@ -32,12 +33,12 @@
   <view class="guide" wx:if="{{step === 3}}">
     <text class="headline">快件大小</text>
     <text class="p">请选择更偏好的快件大小(按重量分为小、中、大)</text>
-    <button bindtap="small">小件</button>
-    <button bindtap="medium">中件</button>
-    <button bindtap="large">大件</button>
+    <button bindtap="small" class="type1">小件</button>
+    <button bindtap="medium" class="type1">中件</button>
+    <button bindtap="large" class="type1">大件</button>
     <div class="nav">
       <button class="prev" size="mini" type="default" bindtap="prevStep">上一步</button>
-      <button class="next" size="mini" type="default" bindtap="goHome">保存并回到首页</button>
+      <button class="end" size="mini" type="default" bindtap="goHome">保存并回到首页</button>
     </div>
   </view>
 <!-- </view> -->

@@ -140,18 +140,27 @@ Page({
     var that = this
     wx.showLoading({
       title: '加载中',
+<<<<<<< HEAD
+    })
+    wx.cloud.init({
+        traceUser: true
+    })
+    console.log(app.globalData.openId)
+    console.log('加载云函数')
+=======
     });
     wx.cloud.init({
       traceUser: true
     })
      console.log('加载云函数')
+>>>>>>> b95df270f4f20f9c6651d726faaf9818cc8c3f4c
       wx.cloud.callFunction({
         // 云函数名称
         // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
         //待修改云函数（与授权用户id匹配后显示）  模仿get_post_list
-        name: 'get_userorder_list',
+        name: 'get_userorder_list2',
         data: {
-          user_openid: app.globalData.openId,
+          author_id: app.globalData.openId,
           user_name: app.globalData.wechatNickName
         },
         success: function (res) {   //*
@@ -168,7 +177,7 @@ Page({
           wx.stopPullDownRefresh()
         },
         fail(res){
-          console.log('读不出数据,调用失败！')
+          console.log(res)
           wx.hideLoading()
           wx.stopPullDownRefresh()
         } 
@@ -180,7 +189,7 @@ Page({
    */
   onLoad: function (options) {
     // 这个工具资瓷日子过滤吗？
-    console.log("posts.js - onLoad")
+    console.log(getApp().globalData.userInfo)
 
     wx.startPullDownRefresh()
     this.refresh()
