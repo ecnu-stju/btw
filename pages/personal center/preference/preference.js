@@ -31,6 +31,27 @@ Page({
       step: this.data.step + 1
     })
   },
+  goHome: function () {
+    wx.showToast({
+      title: 'success',
+      duration: 1800,
+      mask: true,
+      success: function () {
+        // console.log('haha');
+        setTimeout(function () {
+          //要延时执行的代码
+          wx.switchTab({
+            url: '/pages/postlist/postlist',
+          })
+        }, 1000) //延迟时间
+      }
+    })
+    
+    ///待上传到法商
+    // this.setData({
+    //   step: this.data.step + 1
+    // })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
