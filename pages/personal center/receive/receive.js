@@ -1,7 +1,4 @@
-// pages/authorize/authorize.js
-/**
- * 这段是否有必要
- */
+// 个人全部订单页
 import { $wuxFilterBar } from '../../../components/wuxfilterbar';
 const util = require('../../../utils/util.js');
 
