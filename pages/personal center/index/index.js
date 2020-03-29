@@ -73,6 +73,9 @@ Page({
       })
       return false
     }
+    wx.switchTab({
+      url: '/pages/postlist/postlist',
+    })
     util.login().then((res) => {
       return util.request(api.AuthLoginByWeixin, {
         code: res,
