@@ -229,15 +229,28 @@ Page({
   onClick: function (e) {
     // console.log(e.currentTarget.dataset.postid)
     ///
+    var that=this;
     wx.showModal({
       title: '提示',
       content: '是否确认抢单并抵押0.1积分？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
-          wx.showToast({
-            image: '../../images/warn.png',
-            title: '抢单成功!',
+          
+          //更新状态编号
+          wx.cloud.callFunction({
+            name: 'update_status',
+            data: {
+              postid: that.data.postid
+            },
+            success: function (res) {
+              console.log('更新状态编号成功')
+              wx.showToast({
+                image: '../../images/warn.png',
+                title: '抢单成功!',
+              })
+              //console.log(that.data.postid)
+            }
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
