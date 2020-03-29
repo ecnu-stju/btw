@@ -29,7 +29,7 @@
     </view>
     
     <view class="order">
-      <navigator url="/pages/personal center/notdeliver/notdeliver" class="a">
+      <navigator url="/pages/personal center/notdeliver/all/all" class="a">
         <text class="txt">待送达</text>
       </navigator>
     </view>

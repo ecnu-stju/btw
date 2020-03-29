@@ -1,6 +1,6 @@
-// 待送达
-import { $wuxFilterBar } from '../../../components/wuxfilterbar';
-const util = require('../../../utils/util.js');
+// 个人全部订单页
+import { $wuxFilterBar } from '../../../../components/wuxfilterbar';
+const util = require('../../../../utils/util.js');
 
 const app = getApp()
 Page({
@@ -122,7 +122,7 @@ Page({
       },
     ],
 
-    postlist: null,
+    userorder_list: null,
     update: false,// 用于发布动态后的强制刷新标记
     userInfo: {},
     hasUserInfo: false,// 会导致每次加载授权按钮都一闪而过，需要优化
@@ -139,35 +139,76 @@ Page({
       title: '加载中',
     })
     wx.cloud.init({
-      traceUser: true
+        traceUser: true
     })
-    wx.cloud.callFunction({
-      // 云函数名称
-      // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
-      //待修改云函数（与授权用户id匹配后显示）  模仿get_post_list
-      name: 'get_userorder_list2',
-      success: function (res) {   //*res的内容？
-        //提取数据
-        var data = res.result.postlist.data   //还是postlist吗？
-        for (let i = 0; i < data.length; i++) {
-          // console.log(data[i])
-          data[i].update_time = util.formatTime(new Date(data[i].update_time))
-        }
-        wx.hideLoading()
-        that.setData({
-          postlist: data
-        })
-        wx.stopPullDownRefresh()
-      },
-      fail: console.error
-    })
+    // console.log(app.globalData.openId)
+    console.log('加载云函数')
+      wx.cloud.callFunction({
+        // 云函数名称
+        // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
+        //待修改云函数（与授权用户id匹配后显示）  模仿get_post_list
+        name: 'get_userorder_list2',
+        data: {
+          author_id: app.globalData.openId,
+          user_name: app.globalData.wechatNickName
+        },
+        success: function (res) {   //*
+          //提取数据
+          var self = res.result.userorder_list.data   //还是postlist吗？
+          for (let i = 0; i < self.length; i++) {
+            //console.log(self[i])
+            self[i].update_time = util.formatTime(new Date(self[i].update_time))
+          }
+          wx.hideLoading()
+          that.setData({
+            userorder_list: self
+          })
+          wx.stopPullDownRefresh()
+        },
+        fail(res){
+          console.log(res)
+          wx.hideLoading()
+          wx.stopPullDownRefresh()
+        } 
+      })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(1)
+    // 这个工具资瓷日子过滤吗？
+    console.log(getApp().globalData.userInfo)
+
+    wx.startPullDownRefresh()
+    this.refresh()
+
+
+    this.$wuxFilterBar = $wuxFilterBar.init({
+      items: this.data.items,
+      onChange: (checkedItems, items) => {
+        console.log(this, checkedItems, items)
+        const params = {}
+        checkedItems.forEach((n) => {
+          if (n.value === 'filter') {
+            console.log("选中的标题内容为：" + n.value);
+            n.children.filter((n) => n.selected).forEach((n) => {
+              if (n.value === 'query') {
+                console.log("选中的具体内容为：" + n.value);
+
+                const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
+                params.query = selected;
+                var arr = params.query;
+                var newarr = arr.split(" ");
+                console.log(typeof params.query);
+                console.log("最终选中的内容为：" + newarr);
+              }
+            })
+          }
+        })
+      },
+    })
+
 
   },
 
@@ -183,7 +224,7 @@ Page({
    */
   onShow: function () {
     var that = this
-    console.log("notdeliver.js - onShow")
+    console.log("receive.js - onShow")
     if (this.data.update) {
       wx.startPullDownRefresh()
       this.refresh()
@@ -199,6 +240,34 @@ Page({
       },
       fail: function () {
         that.userInfoAuthorize()
+      }
+    })
+  },
+
+  userInfoAuthorize: function () {
+    var that = this
+    console.log('authorize')
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) { // 存储用户信息
+          wx.getUserInfo({
+            success: res => {
+              console.log(res.userInfo.nickName)
+              console.log(util.formatTime(new Date()))
+
+              wx.setStorage({
+                key: app.globalData.userInfo,
+                data: res.userInfo,
+              })
+              app.globalData.wechatNickName = res.userInfo.nickName
+              app.globalData.wechatAvatarUrl = res.userInfo.avatarUrl
+            }
+          })
+        } else { // 跳转到授权页面 
+          wx.navigateTo({
+            url: '/pages/authorize/authorize',
+          })
+        }
       }
     })
   },
