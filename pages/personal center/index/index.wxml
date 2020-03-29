@@ -17,19 +17,19 @@
     </view>
 
     <view class="order">
-      <navigator url="/pages/personal center/notreceive/notreceive" class="a">
+      <navigator url="/pages/personal center/notreceive/all/all" class="a">
         <text class="txt">待收货</text>
       </navigator>
     </view>
 
     <view class="order">
-      <navigator url="/pages/personal center/deliver/deliver" class="a">
+      <navigator url="/pages/personal center/deliver/all/all" class="a">
         <text class="txt">已送达</text>
       </navigator>
     </view>
     
     <view class="order">
-      <navigator url="/pages/personal center/notdeliver/notdeliver" class="a">
+      <navigator url="/pages/personal center/notdeliver/all/all" class="a">
         <text class="txt">待送达</text>
       </navigator>
     </view>
