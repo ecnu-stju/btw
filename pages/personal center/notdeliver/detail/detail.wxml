@@ -36,7 +36,7 @@
         </view>
         <view class='image_area'>
             <view class='image' wx:for='{{imageUrls}}'>
-                <image src='{{item}}' mode='widthFix'></image>
+                <image src='{{item}}' mode='widthFix' bindtap="PreImage"></image>
             </view>
         </view>
       <!-- <view class= 'container'> -->

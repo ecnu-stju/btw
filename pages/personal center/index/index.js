@@ -13,6 +13,7 @@ Page({
     // console.log(app.globalData.wechatAvatarUrl)
     this.setData(
       { 
+        // userInfo: { nickname: app.globalData.wechatNickName },
         avt: app.globalData.wechatAvatarUrl
       }
     )
@@ -73,9 +74,34 @@ Page({
       })
       return false
     }
-    wx.switchTab({
-      url: '/pages/postlist/postlist',
+    var that = this
+
+    wx.showLoading({
+      title: '正在认证中',
+      duration: 4800,
+      mask: true,
+      success: function () {
+        // console.log('haha');
+        setTimeout(function () {
+          //要延时执行的代码
+          that.setData(
+            {
+              userInfo: { nickname: app.globalData.wechatNickName },
+              showLoginDialog: false
+              // avt: app.globalData.wechatAvatarUrl
+            }
+          )
+          // wx.switchTab({
+          //   url: '/pages/postlist/postlist',
+          // })
+        }, 4000) //延迟时间
+      }
     })
+
+    return true
+    // wx.switchTab({
+    //   url: '/pages/postlist/postlist',
+    // })
     util.login().then((res) => {
       return util.request(api.AuthLoginByWeixin, {
         code: res,

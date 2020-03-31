@@ -246,17 +246,24 @@ Page({
             success: function (res) {
               console.log('更新状态编号成功')
               wx.showToast({
-                image: '../../images/warn.png',
+                // image: '../../images/warn.png',
                 title: '抢单成功!',
+                duration: 1000,
+                // success
               })
+              setTimeout(function () {
+              wx.navigateTo({
+                url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
+              })}
+              ,1000)
               //console.log(that.data.postid)
             }
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
           // wx.navigateTo({
-          //   url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
-          // }) //这里不该有，是用于postlist进detail时、传那一单的id
+          //   url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
+          // }) //原本这里不该有，是用于postlist进detail时、传那一单的id，现在也可以需要
         }
       }
     })

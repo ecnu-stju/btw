@@ -18,6 +18,19 @@ Page({
     postid: '',
     comment_value: ''
   },
+
+  //图片点击事件
+  PreImage: function (event) {
+    // console.log(event)
+    var src = event.currentTarget.dataset.src;//获取data-src
+    var imgList = event.currentTarget.dataset.list;//获取data-list
+    //图片预览
+    wx.previewImage({
+      // current: src, // 当前显示图片的http链接
+      urls: this.data.imageUrls
+      // ["http://tmp/wxd98e7d772df2ef2c.o6zAJs4F3RGEF5PxAZMpWJZkC78k.Jppb2dxsAuOcd3e611627bd9ea259f32b9592a748fe8.jpeg"] // 需要预览的图片http链接列表
+    })
+  },
   refreshComment: function(postid){
     var that = this
     wx.cloud.callFunction({
