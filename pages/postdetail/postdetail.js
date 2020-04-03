@@ -252,7 +252,7 @@ Page({
                 // success
               })
               setTimeout(function () {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
               })}
               ,1000)
@@ -261,6 +261,17 @@ Page({
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
+          {
+            // wx.switchTab({
+            //   url: '/pages/personal center/index/index',
+            //   success: function (res) {
+                // wx.redirectTo({
+                //   url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
+                // })
+              
+            //   }
+            // })
+          }
           // wx.navigateTo({
           //   url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
           // }) //原本这里不该有，是用于postlist进detail时、传那一单的id，现在也可以需要

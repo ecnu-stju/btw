@@ -227,7 +227,7 @@ Page({
 
       },
       fail: function () {
-        that.userInfoAuthorize()
+        // that.userInfoAuthorize()
       }
     })
   },

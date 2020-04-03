@@ -40,7 +40,7 @@
             </view>
         </view>
       <!-- <view class= 'container'> -->
-        <button bindtap="onClick" class='btn1' >确认抢单</button>
+        <button bindtap="onClick" class='btn1' >确认已送并扫码</button>
       <!-- </view> -->
     </view>
     <view style='background: red' wx:if='{{false}}'>数据展示区：浏览数，关注数，评论数等等</view>
