@@ -227,6 +227,7 @@ Page({
 
   },
   onClick: function (e) {
+    var that = this
     // console.log(e.currentTarget.dataset.postid)
     ///
     wx.showModal({
@@ -238,6 +239,13 @@ Page({
           wx.showToast({
             image: '../../images/warn.png',
             title: '抢单成功!',
+          })
+          wx.cloud.callFunction({
+            name:'update_status',
+            data:{
+              postid: that.data.detail._id,
+              deliverer_id: app.globalData.openId
+            }
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
