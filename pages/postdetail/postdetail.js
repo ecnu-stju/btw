@@ -227,6 +227,7 @@ Page({
 
   },
   onClick: function (e) {
+    var that = this
     // console.log(e.currentTarget.dataset.postid)
     ///
     var that=this;
@@ -257,6 +258,13 @@ Page({
               })}
               ,1000)
               //console.log(that.data.postid)
+            }
+          })
+          wx.cloud.callFunction({
+            name:'update_status',
+            data:{
+              postid: that.data.detail._id,
+              deliverer_id: app.globalData.openId
             }
           })
         } else if (res.cancel) {

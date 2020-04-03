@@ -23,7 +23,8 @@ Page({
       mobile: '',
       note:'',
       is_default: 0,
-      blockNum:''
+      blockNum:'',
+      deliverer_id:''  //增加记录deliverer_id
     },
   },
   /**
@@ -145,6 +146,7 @@ Page({
         x:'2',
         pickup_code: this.data.address.Pickup_code,
         id: this.data.address.id,
+        deliverer_id: this.data.address.deliverer_id,  //增加记录送货者的id
         // city_id: this.data.address.city_id,
         address: this.data.address.address,
         //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到

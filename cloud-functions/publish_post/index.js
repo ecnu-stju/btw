@@ -37,7 +37,7 @@ exports.main = async (event, context) => {
         note: event.note,
         //is_default: event.address.is_default,
         status:1,
-
+        deliverer_id:event.deliverer_id, //增加记录送货者的id
       }
     })
   } catch (e) {
