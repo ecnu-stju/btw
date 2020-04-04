@@ -15,6 +15,7 @@
     "pages/personal center/notdeliver/all/all",
     "pages/personal center/notdeliver/detail/detail",
     "pages/personal center/index/index",
+    "pages/personal center/index/faceAuthentication/faceAuthentication",
     "pages/personal center/balance/balance",
     "pages/personal center/preference/preference",
     "pages/personal center/address/address",
