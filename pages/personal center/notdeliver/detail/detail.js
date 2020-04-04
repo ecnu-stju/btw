@@ -169,6 +169,40 @@ Page({
 
   },
 
+  scan_confirm: function () {
+    wx.scanCode({
+      success: function(res)
+      {
+        // 跳转页面
+        console.log(res['result'])
+        //增加update条码值，进去一层再扫码！ok 
+        wx.showModal({
+          title: '提示',
+          content: '是否确定扫码结果（并上传）：'+res['result'],
+          success (res) {
+          if (res.confirm) {
+          console.log('用户点击scan结果确定')
+          //调用发送评论云函数
+          } 
+          else if (res.cancel) {
+          console.log('scan结果取消')
+          }
+          }
+        })
+        // wx.navigateTo({
+        //   url: '../datain/datain?res='+res['result']
+        // })
+      },
+      fail: function(res){
+        var error = '扫码失败'
+        // wx.navigateTo({
+        //   url: '../error/error?error='+error,
+        // })
+      }
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
