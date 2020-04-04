@@ -82,7 +82,9 @@
     <view class='title'>请选择认证方式</view>
     <view class='content'>
       <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信企业号认证</button>
-      <button open-type="getUserInfo" lang="zh_CN" >人脸认证</button>
+      <navigator url="/pages/personal center/index/faceAuthentication/faceAuthentication" class="a">
+        <button open-type="getUserInfo" lang="zh_CN" >人脸认证</button>
+      </navigator>
       <!-- bindgetuserinfo="onWechatLogin" -->
     </view>
   </view>

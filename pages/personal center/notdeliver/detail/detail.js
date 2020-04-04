@@ -169,6 +169,100 @@ Page({
 
   },
 
+  scan_confirm: function () {
+    var that = this
+
+    wx.scanCode({
+      success: function(res)
+      {
+        // 跳转页面
+        // console.log(res['result'])
+        var scanCod = res['result'];
+        //增加update条码值，进去一层再扫码！ok 
+        wx.showModal({
+          title: '提示',
+          content: '是否确定扫码结果（并上传）：'+res['result'],
+          success (res) {
+          if (res.confirm) {
+          console.log('用户点击scan结果确定')
+          //调用发送评论云函数
+    if (res['result']=="") {
+      wx.showToast({
+        image: '../../images/warn.png',
+        title: '评论不能为空',
+      })
+      return
+    }
+    wx.showLoading({
+      title: '发布中',
+    })
+    console.log(res['scanCod']);
+    
+    wx.cloud.callFunction({
+      // 云函数名称 
+      name: 'add_comment',
+      data: {
+        postid: that.data.detail._id,
+        openid: app.globalData.openId,
+        //原轮子作者埋坑了，本地该值本为undefined，云函数里用的是自动产生的，现已基本将本地坑在postlist页的云函数里集成填了，但仍有缺憾
+        name: app.globalData.wechatNickName,
+        avatarUrl: app.globalData.wechatAvatarUrl,
+        content: "条码号 \t"+scanCod
+      },
+      success: function (res) {
+        
+        wx.hideLoading()
+        // this that 很迷
+        that.refreshComment(that.data.postid)
+        // that.setData({
+        //   comment_value: ''
+        // })
+        //更新状态编号
+        wx.cloud.callFunction({
+          name: 'update_status',
+          data: {
+            postid: that.data.detail._id,
+            deliverer_id: app.globalData.openId
+          },
+          success: function (res) {
+            console.log('更新状态编号成功')
+            wx.showToast({
+              // image: '../../images/warn.png',
+              title: '上传条码号成功!',
+              duration: 1000,
+              // success
+            })
+            setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/personal center/deliver/detail/detail?postid=' + that.data.postid,
+            })}
+            ,1000)
+            //console.log(that.data.postid)
+          }
+        })
+        //
+      }
+    })
+          } 
+          else if (res.cancel) {
+          console.log('scan结果取消')
+          }
+          }
+        })
+        // wx.navigateTo({
+        //   url: '../datain/datain?res='+res['result']
+        // })
+      },
+      fail: function(res){
+        var error = '扫码失败'
+        // wx.navigateTo({
+        //   url: '../error/error?error='+error,
+        // })
+      }
+    })
+
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
