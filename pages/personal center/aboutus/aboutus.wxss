@@ -10,7 +10,7 @@
 
 .txt{
   display: block;
-  padding-top:10rpx;
+  padding: 10rpx;
   width: 100%;
   font-size: 34rpx;
   color:rgb(51, 51, 51);
