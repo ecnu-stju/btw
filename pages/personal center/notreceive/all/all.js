@@ -1,6 +1,6 @@
-// pages/posts/posts.js
-import { $wuxFilterBar } from '../../../../components/wuxfilterbar';
-const util = require('../../../../utils/util.js');  
+// 个人待收货页
+//import { $wuxFilterBar } from '../../../components/wuxfilterbar';
+const util = require('../../../../utils/util.js');
 
 const app = getApp()
 Page({
@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
+  /**
+   * items: [
       {
         type: 'filter',
         label: '筛选',
@@ -43,7 +44,7 @@ Page({
               label: '其他',
               value: '6',
             },
-            
+
             ],
           },
           {
@@ -66,7 +67,7 @@ Page({
               label: '19时-22时',
               value: '4',
             },
-            
+
             ],
           },
           {
@@ -85,7 +86,7 @@ Page({
               label: '大件',
               value: '3',
             },
-            
+
             ],
           },
           {
@@ -120,59 +121,74 @@ Page({
         ],
         groups: ['001', '002', '003'],//判断元素是否同组
       },
-    ],
-
-    postlist: null,
+    ]
+   */
+    userorder_list: null,
     update: false,// 用于发布动态后的强制刷新标记
     userInfo: {},
     hasUserInfo: false,// 会导致每次加载授权按钮都一闪而过，需要优化
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    page_status: 'notreceive'
+
   },
+
   /**
    * 刷新数据
    */
   refresh: function () {
     var that = this
     wx.showLoading({
-      title: '加载中',
-      mask: true,
+      title: '加载中'
     })
     wx.cloud.init({
       traceUser: true
     })
+    // console.log(app.globalData.openId)
+    console.log('加载云函数')
     wx.cloud.callFunction({
       // 云函数名称
       // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
-      name: 'get_post_list',
-      success: function (res) {
+      //待修改云函数（与授权用户id匹配后显示）  模仿get_post_list
+      name: 'get_userorder_list2',
+      data: {
+        author_id: app.globalData.openId,
+        user_name: app.globalData.wechatNickName,
+        page_status: this.data.page_status
+      },
+      success: function (res) {   //*
         //提取数据
-        var data = res.result.postlist.data
-        for (let i = 0; i < data.length; i++) {
-          // console.log(data[i])
-          data[i].update_time = util.formatTime(new Date(data[i].update_time))
+        var self = res.result.userorder_list.data   //还是postlist吗？
+        for (let i = 0; i < self.length; i++) {
+          //console.log(self[i])
+          self[i].update_time = util.formatTime(new Date(self[i].update_time))
         }
         wx.hideLoading()
         that.setData({
-          postlist: data
-        })
-        app.globalData.openId = res.result.openId//这里调用了云函数之后，globalData.openId变量才能使用，不足，在本页的onload、onshow（等）区域内尚且无法使用globalData.openId，貌似因为异步调云函数没那么快？
+          userorder_list: self
+        }),
         wx.stopPullDownRefresh()
       },
-      fail: console.error
+      fail(res) {
+        console.log(res)
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+      }
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // 这个工具资瓷日子过滤吗？
-    console.log("posts.js - onLoad")
-    
+    console.log(getApp().globalData.userInfo)
+
     wx.startPullDownRefresh()
     this.refresh()
 
 
-    this.$wuxFilterBar = $wuxFilterBar.init({
+    /**
+     * this.$wuxFilterBar = $wuxFilterBar.init({
       items: this.data.items,
       onChange: (checkedItems, items) => {
         console.log(this, checkedItems, items)
@@ -196,6 +212,7 @@ Page({
         })
       },
     })
+    */
 
 
   },
@@ -212,7 +229,7 @@ Page({
    */
   onShow: function () {
     var that = this
-    console.log("posts.js - onShow")
+    console.log("notreceive.js - onShow")
     if (this.data.update) {
       wx.startPullDownRefresh()
       this.refresh()
@@ -231,9 +248,7 @@ Page({
       }
     })
   },
-  /**
-   * 这段代码还是很丑陋，怎么优化
-   */
+
   userInfoAuthorize: function () {
     var that = this
     console.log('authorize')
@@ -261,6 +276,7 @@ Page({
       }
     })
   },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -279,14 +295,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.refresh()
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    // TODO 主体功能完备后要支持分页加载
+
   },
 
   /**
@@ -296,25 +312,17 @@ Page({
 
   },
 
-  /**
-   * 带参跳转
-   */
-  newPost: function(e) {
-    wx.navigateTo({
-      url: '../../../../../publish/publish'
-    })
-  },
   onItemClick: function (e) {
     console.log(e.currentTarget.dataset.postid)
     ///
     wx.showModal({
       title: '提示',
-      content: '是否确认进入抢单页面？',
+      content: '是否查看订单详情？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
           wx.navigateTo({
-            url: '../detail/detail?postid=' + e.currentTarget.dataset.postid,
+            url: '../orderdetail/orderdetail?postid=' + e.currentTarget.dataset.postid,
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
