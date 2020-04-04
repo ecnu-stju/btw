@@ -309,7 +309,7 @@ Page({
     ///
     wx.showModal({
       title: '提示',
-      content: '是否确认进入抢单页面？',
+      content: '是否确认进入详情页面？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')

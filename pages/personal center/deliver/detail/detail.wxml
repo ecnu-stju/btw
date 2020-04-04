@@ -40,8 +40,10 @@
             </view>
         </view>
       <!-- <view class= 'container'> -->
-        <button bindtap="onClick" class='btn1' >确认抢单</button>
+        <button bindtap="chooseimage" class='btn1' >添加收款码</button>
       <!-- </view> -->
+      <button bindtap="send" class='btn1' >确认上传收款码</button>
+
     </view>
     <view style='background: red' wx:if='{{false}}'>数据展示区：浏览数，关注数，评论数等等</view>
     <view class='all_comment' style='background: #EDEDED' wx:if='{{imagesLoaded}}'>

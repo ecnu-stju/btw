@@ -40,6 +40,6 @@
     </view>
 </block>
 <!--TODO 如何使用MinUI提供的组件库-->
-<image bindtap="chooseimage" class="moment_img new_post" bindtap="newPost" src='../../images/add7.png'></image>
+<!-- <image bindtap="chooseimage" class="moment_img new_post" bindtap="newPost" src='../../images/add7.png'></image> -->
 <!-- 需要使用 button 来授权登录 -->
 
