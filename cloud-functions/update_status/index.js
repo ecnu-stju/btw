@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
   //   appid: wxContext.APPID,
   //   unionid: wxContext.UNIONID,
   // }
-    if (status=1) {
+  if (status = 1, deliverer_id='') {
       await db.collection('post_collection').where({
         _id: event.postid
       }).update({

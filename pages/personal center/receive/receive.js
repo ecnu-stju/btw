@@ -126,7 +126,8 @@ Page({
     update: false,// 用于发布动态后的强制刷新标记
     userInfo: {},
     hasUserInfo: false,// 会导致每次加载授权按钮都一闪而过，需要优化
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    page_status:'all'
 
   },
 
@@ -150,7 +151,8 @@ Page({
         name: 'get_userorder_list2',
         data: {
           author_id: app.globalData.openId,
-          user_name: app.globalData.wechatNickName
+          user_name: app.globalData.wechatNickName,
+          page_status: this.data.page_status
         },
         success: function (res) {   //*
           //提取数据
