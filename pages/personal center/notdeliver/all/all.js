@@ -315,11 +315,7 @@ Page({
     ///
     wx.showModal({
       title: '提示',
-<<<<<<< HEAD
-      content: '是否查看订单详情？',
-=======
       content: '是否确认进入详情页面？',
->>>>>>> c9a53179f10b61ffec41b6eaa08f92b60dd87914
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
