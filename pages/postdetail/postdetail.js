@@ -242,7 +242,8 @@ Page({
           wx.cloud.callFunction({
             name: 'update_status',
             data: {
-              postid: that.data.postid
+              postid: that.data.detail._id,
+              deliverer_id: app.globalData.openId
             },
             success: function (res) {
               console.log('更新状态编号成功')
@@ -260,13 +261,13 @@ Page({
               //console.log(that.data.postid)
             }
           })
-          wx.cloud.callFunction({
-            name:'update_status',
-            data:{
-              postid: that.data.detail._id,
-              deliverer_id: app.globalData.openId
-            }
-          })
+          //wx.cloud.callFunction({
+          //  name:'update_status',
+          //  data:{
+          //    postid: that.data.detail._id,
+          //    deliverer_id: app.globalData.openId
+          //  }
+          //})
         } else if (res.cancel) {
           console.log('用户点击取消')
           {
