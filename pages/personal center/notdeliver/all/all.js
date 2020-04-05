@@ -320,7 +320,7 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.navigateTo({
-            url: '../orderdetail/orderdetail?postid=' + e.currentTarget.dataset.postid,
+            url: '../detail/detail?postid=' + e.currentTarget.dataset.postid,
           })
         } else if (res.cancel) {
           console.log('用户点击取消')

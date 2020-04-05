@@ -1,4 +1,4 @@
-const util = require('../../../utils/util.js');
+const util = require('../../../utils/util.js');  
 const app = getApp()
 Page({
 
@@ -8,19 +8,37 @@ Page({
   data: {
     contentLoaded: false,
     imagesLoaded: false,
-    //commentLoaded: false,
+    commentLoaded: false,
     detail: {},
     imageUrls: [],
     inputBoxShow: true,
     maxContentLength: 300,
-    //comment: '',
-    //comments: [],
+    comment: '',
+    comments: [],
     postid: '',
-    //comment_value: ''
+    comment_value: ''
   },
-
-//与postdetail比，应该不用显示评论？==>没有refreshcomment函数
-
+  refreshComment: function(postid){
+    var that = this
+    wx.cloud.callFunction({
+      name: 'get_comment_for_post',
+      data: {
+        postid: postid,
+      },
+      success: function (res) {
+        console.log(res.result.comment_list.data)
+        var commentList = res.result.comment_list.data
+        for (let i = 0; i < commentList.length; i++) {
+          commentList[i].time = util.formatTime(new Date(commentList[i].time))
+        }
+        that.setData({
+          comments: res.result.comment_list.data,
+          commentLoaded: true
+        })
+        that.checkLoadFinish()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,23 +47,46 @@ Page({
       title: '加载中',
     })
     var that = this
-    //取消了更新浏览次数功能
+    /*为什么失败了，小程序端
+    const db = wx.cloud.database({
+      env: "ecnu-project-50330f"///ecnu-project-50330f、rss-hub-test-898ca3
+    })
+    const _ = db.command
+    const collection = db.collection('post_collection')
+    const record = collection.doc(options.postid)
+    record.get({
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
+    */
+
+    // 更新浏览次数，TODO本地如何及时同步
+    wx.cloud.callFunction({
+      name: 'update_watch_count',
+      data: {
+        postid: options.postid
+      },
+      success: function (res) {
+        console.log('更新浏览次数成功')
+      }
+    })
+
     // 获取内容
     wx.cloud.callFunction({
       // 云函数名称 
-      name: 'get_userorder_detail',
+      name: 'get_post_detail',
       data: {
-        postid: options.postid 
+        postid: options.postid
       },
       success: function (res) {
-       //postdetail==>userdetail
-        var userdetail = res.result.userdetail.data[0];    
-        userdetail.publish_time = util.formatTime(new Date(userdetail.publish_time))
+        var postdetail = res.result.postdetail.data[0];
+        postdetail.publish_time = util.formatTime(new Date(postdetail.publish_time))
         that.setData({
-          detail: userdetail,
+          detail: postdetail,
           contentLoaded: true
         })
-        that.downloadImages(userdetail.image_url)
+        that.downloadImages(postdetail.image_url)
       },
       fail: console.error
     })
@@ -58,23 +99,23 @@ Page({
     })
 
     // 获取评论
-    //this.refreshComment(options.postid)
+    this.refreshComment(options.postid)
 
   },
-
+  
   /**
    * 从数据库获取图片的fileId，然后去云存储下载，最后加载出来
    */
-  downloadImages: function (image_urls) {
+  downloadImages: function(image_urls){
     var that = this
-    if (image_urls.length == 0) {
+    if(image_urls.length == 0){
       that.setData({
         imageUrls: [],
         imagesLoaded: true
       })
     } else {
       var urls = []
-      for (let i = 0; i < image_urls.length; i++) {
+      for(let i = 0; i < image_urls.length; i++) {
         wx.cloud.downloadFile({
           fileID: image_urls[i],
           success: res => {
@@ -100,13 +141,6 @@ Page({
     this.checkLoadFinish()
   },
 
-  checkLoadFinish: function () {
-    if (this.data.contentLoaded
-      && this.data.imagesLoaded) {
-      wx.hideLoading()
-    }
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -118,6 +152,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
 
   },
 
@@ -154,5 +189,83 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  sendComment: function() {
+    var that = this
+    if (this.data.comment.length < 1) {
+      wx.showToast({
+        image: '../../images/warn.png',
+        title: '评论不能为空',
+      })
+      return
+    }
+    wx.showLoading({
+      title: '发布中',
+    })
+    wx.cloud.callFunction({
+      // 云函数名称 
+      name: 'add_comment',
+      data: {
+        postid: this.data.detail._id,
+        openid: app.globalData.openId,
+        //原轮子作者埋坑了，本地该值本为undefined，云函数里用的是自动产生的，现已基本将本地坑在postlist页的云函数里集成填了，但仍有缺憾
+        name: app.globalData.wechatNickName,
+        avatarUrl: app.globalData.wechatAvatarUrl,
+        content: this.data.comment
+      },
+      success: function (res) {
+        
+        wx.hideLoading()
+        // this that 很迷
+        that.refreshComment(that.data.postid)
+        that.setData({
+          comment_value: ''
+        })
+      }
+    })
+
+  },
+  onClick: function (e) {
+    // console.log(e.currentTarget.dataset.postid)
+    ///
+    wx.showModal({
+      title: '提示',
+      content: '是否确认抢单并抵押0.1积分？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showToast({
+            image: '../../images/warn.png',
+            title: '抢单成功!',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          // wx.navigateTo({
+          //   url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
+          // }) //这里不该有，是用于postlist进detail时、传那一单的id
+        }
+      }
+    })
+
+  },
+  input: function (e) {//就是this.deta.comment_value应该
+  ///区别与联系：前面页面首次加载时把这个comment_value置空了，以保证不会显示上次的残留，下面读取的也就必然是刚刚输入的新评论
+    if (e.detail.value.length >= this.data.maxContentLength) {
+      wx.showToast({
+        title: '已达到最大字数限制',
+      })
+    }
+    this.setData({
+      comment: e.detail.value
+    })
+  },
+  checkLoadFinish: function() {
+    if (this.data.contentLoaded
+          && this.data.imagesLoaded
+          && this.data.commentLoaded){
+      wx.hideLoading()
+    }
   }
+
 })
