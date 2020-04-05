@@ -21,7 +21,7 @@ exports.main = async (event, context) => {
   //   }
   // })
 
-  if (true) {
+  // if (true) {
     await db.collection('post_collection').where({
       _id: event.postid
     }).update({
@@ -41,6 +41,6 @@ exports.main = async (event, context) => {
     return await db.collection('post_collection').where({
       _id: event.postid
     })
-  }
+  // }
   
 }

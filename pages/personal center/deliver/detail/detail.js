@@ -87,6 +87,10 @@ Page({
     var that = this
     console.log(that.data.postid);
     
+    wx.cloud.init({
+      traceUser: true
+    })
+
     wx.cloud.callFunction({
       name: 'update_post',
       data: {
@@ -98,24 +102,26 @@ Page({
         //调用这两个都是用全局变量的
         content: this.data.content,
         image_url: img_url_ok,//本地要显示图像，图像是一个链接的形式，链接是可以直接得到的，不用 event 之类的来装
-        // x:'2',
-        pickup_code: this.data.address.Pickup_code,
-        id: this.data.address.id,
-        deliverer_id: this.data.address.deliverer_id,  //增加记录送货者的id
-        // city_id: this.data.address.city_id,
-        address: this.data.address.address,
-        //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到
-        // full_region: this.data.address.full_region,
-        //full_region: this.data.address.blockNum,
-        blockNum: this.data.address.blockNum,
-        author_parcel_name: that.data.address.author_parcel_name,
-        mobile: this.data.address.mobile,
-        //is_default: this.data.address.is_default,
-        note: this.data.address.note,
-        publish_time: "",
-        update_time: ""//目前让服务器自己生成这两个时间
+        //云函数报错能力不佳，实际上下面的参数明显过多偏差了，导致调用失败
+        // // x:'2',
+        // pickup_code: this.data.address.Pickup_code,
+        // id: this.data.address.id,
+        // deliverer_id: this.data.address.deliverer_id,  //增加记录送货者的id
+        // // city_id: this.data.address.city_id,
+        // address: this.data.address.address,
+        // //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到
+        // // full_region: this.data.address.full_region,
+        // //full_region: this.data.address.blockNum,
+        // blockNum: this.data.address.blockNum,
+        // author_parcel_name: that.data.address.author_parcel_name,
+        // mobile: this.data.address.mobile,
+        // //is_default: this.data.address.is_default,
+        // note: this.data.address.note,
+        // publish_time: "",
+        // update_time: ""//目前让服务器自己生成这两个时间
       },
       success: function (res) {
+        wx.hideLoading()//严谨地，前面加个hideload
         wx.showToast({
           icon: 'success',
           title: '上传成功!',//应该加个点5状态？
@@ -128,10 +134,11 @@ Page({
         prevPage.setData({
           update: true
         })
-        wx.hideLoading()
-        wx.navigateBack({
-          delta: 1
-        })
+        setTimeout(function (){
+          wx.navigateBack({
+            delta: 1
+          })//此页需要吗？
+        },500)
       },
       fail: function(res) {
         console.log(res)
