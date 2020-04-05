@@ -30,6 +30,14 @@ exports.main = async (event, context) => {
             status:4
           },
           {
+            author_id: event.author_id,
+            status: 3
+          },
+          {
+            author_id: event.author_id,
+            status: 2
+          },
+          {
             deliverer_id: event.author_id,
             status: 4
           }
@@ -37,29 +45,18 @@ exports.main = async (event, context) => {
       };
     case 'deliver':
       return {
-        userorder_list: await db.collection('post_collection').where(cmd.or([
-          {
-            author_id: event.author_id,
-            status: 3
-          },
-          {
+        userorder_list: await db.collection('post_collection').where({
             deliverer_id: event.author_id,
             status: 3
-          }
-        ])).orderBy('update_time', 'desc').get(),
+        }).orderBy('update_time', 'desc').get(),
       };
     case 'notdeliver':
       return {
-        userorder_list: await db.collection('post_collection').where(cmd.or([
-          {
-            author_id: event.author_id,
-            status: 2
-          },
-          {
+        userorder_list: await db.collection('post_collection').where({
             deliverer_id: event.author_id,
             status: 2
-          }
-        ])).orderBy('update_time', 'desc').get(),
+        }
+         ).orderBy('update_time', 'desc').get(),
       };
     default :
       console.log("default");
