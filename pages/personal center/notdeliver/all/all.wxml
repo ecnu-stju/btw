@@ -43,3 +43,7 @@
 <!-- <image bindtap="chooseimage" class="moment_img new_post" bindtap="newPost" src='../../images/add7.png'></image> -->
 <!-- 需要使用 button 来授权登录 -->
 
+
+<view class="empty-view" wx:if="{{ userorder_list.length <= 0 }}">
+    <text class="text">您没有相关订单</text>
+</view>
