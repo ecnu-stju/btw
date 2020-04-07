@@ -17,7 +17,15 @@ exports.main = async (event, context) => {
   //   appid: wxContext.APPID,
   //   unionid: wxContext.UNIONID,
   // }
-  if (status = 1, deliverer_id='') {
+  var a=await db.collection('post_collection').where({
+    _id: event.postid
+  }).get()//接.then( result => console.log(result))似乎也可解析，因为异步操作接上了？
+  console.log(a.data[0].status);
+  
+  // var status=await db.collection('post_collection').where({
+  //   _id: event.postid
+  // }).get().data[0].status//deliverer_id= await 
+  if (a.data[0].status == 1) {//, deliverer_id=''
       await db.collection('post_collection').where({
         _id: event.postid
       }).update({

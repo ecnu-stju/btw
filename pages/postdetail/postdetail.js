@@ -238,6 +238,24 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           
+          wx.cloud.callFunction({
+            // 云函数名称 
+            name: 'add_comment',
+            data: {
+              postid: that.data.detail._id,
+              openid: app.globalData.openId,
+              //原轮子作者埋坑了，本地该值本为undefined，云函数里用的是自动产生的，现已基本将本地坑在postlist页的云函数里集成填了，但仍有缺憾
+              name: app.globalData.wechatNickName,
+              avatarUrl: app.globalData.wechatAvatarUrl,
+              content: "抢单时间标记 \t"+Date.now()
+            },
+            success: function (res) {
+              
+              wx.hideLoading()
+              // this that 很迷
+              that.refreshComment(that.data.postid)
+            }
+          })      
           //更新状态编号
           wx.cloud.callFunction({
             name: 'update_status',
@@ -247,6 +265,12 @@ Page({
             },
             success: function (res) {
               console.log('更新状态编号成功')
+              // 强制刷新，这个传参很粗暴
+              var pages = getCurrentPages();             //  获取页面栈
+              var prevPage = pages[pages.length - 2];    // 上一个页面
+              prevPage.setData({
+                update: true
+              })
               wx.showToast({
                 // image: '../../images/warn.png',
                 title: '抢单成功!',
