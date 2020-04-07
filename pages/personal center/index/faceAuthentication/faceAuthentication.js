@@ -143,30 +143,51 @@ Page({
     },
     start: function() {
         var e = this, t = wx.createCameraContext();
-        t.startRecord({
-            success: function(o) {
-                console.log("res和page信息：   ", o, e), e.setData({
-                    timerHandle: setInterval(e._doUpdateTimer, 1e3),
-                    timer: 5,
-                    cameraHandle: t,
-                    button_image: "VideoButtonActive.png",
-                    button_active: "active"
-                });
-            },
-            fail: function(e) {
-                console.log("如果开始录制视频失败：", e), wx.showModal({
-                    title: "提示",
-                    content: "视频无法录制，请检查权限设置！",
-                    confirmText: "权限修改",
-                    success: function(e) {
-                        e.confirm && wx.openSetting();
-                    }
-                });
-            },
-            complete: function(e) {
-                console.log("开始录制视频按钮调用（无论成功或失败）:", e);
+        t.takePhoto({
+            success:function(o) {
+            wx.showLoading({
+              title: '正在验证中',
+              duration: 4500,
+            //   succes
+            })
+            
+            setTimeout(function () {
+                wx.hideLoading()
+                wx.showToast({
+                  title: '与服务器连接性不佳',
+                  icon:'none'
+                })
+                // return
+                }, 5000)
+                
+
+
             }
-        }), console.log("Line100:", "wx.createCameraContext", t);
+        })
+        // t.startRecord({
+        //     success: function(o) {
+        //         console.log("res和page信息：   ", o, e), e.setData({
+        //             timerHandle: setInterval(e._doUpdateTimer, 1e3),
+        //             timer: 5,
+        //             cameraHandle: t,
+        //             button_image: "VideoButtonActive.png",
+        //             button_active: "active"
+        //         });
+        //     },
+        //     fail: function(e) {
+        //         console.log("如果开始录制视频失败：", e), wx.showModal({
+        //             title: "提示",
+        //             content: "照片无法拍摄，请检查权限设置！",
+        //             confirmText: "权限修改",
+        //             success: function(e) {
+        //                 e.confirm && wx.openSetting();
+        //             }
+        //         });
+        //     },
+        //     complete: function(e) {
+        //         console.log("开始录制视频按钮调用（无论成功或失败）:", e);
+        //     }
+        // }), console.log("Line100:", "wx.createCameraContext", t);
     },
     error: function(e) {
         console.log(e.detail), wx.showModal({

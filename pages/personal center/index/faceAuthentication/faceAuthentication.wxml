@@ -14,7 +14,8 @@
         </view>
         <view bindtap="start" style="position: relative;">
             <image class="protrait" mode="widthFix" src="{{button_image}}"></image>
-            <text class="timer {{button_active}}" style="font-size: 100%;">{{timer||'开始'}}</text>
+            <text class="timer {{button_active}}" style="font-size: 100%;">{{'开始'}}</text>
+            <!-- timer|| -->
         </view>
     </view>
 </view>
