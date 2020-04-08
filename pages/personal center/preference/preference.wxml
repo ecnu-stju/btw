@@ -20,10 +20,10 @@
   <view class="guide" wx:if="{{step === 2}}">
     <text class="headline">交接时间</text>
     <text class="p">请选择更偏好的快递交接时间</text>
-    <button bindtap="10-13" class="type1">10时-13时</button>
-    <button bindtap="13-16" class="type1">13时-16时</button>
-    <button bindtap="16-19" class="type1">16时-19时</button>
-    <button bindtap="19-22" class="type1">19时-22时</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">10时-13时</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">13时-16时</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">16时-19时</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">19时-22时</button>
     <div class="nav">
       <button class="prev" size="mini" type="default" bindtap="prevStep">上一步</button>
       <button class="next" size="mini" type="default" bindtap="nextStep">下一步</button>
@@ -34,9 +34,9 @@
   <view class="guide" wx:if="{{step === 3}}">
     <text class="headline">快件大小</text>
     <text class="p">请选择更偏好的快件大小(按重量分为小、中、大)</text>
-    <button bindtap="small" class="type1">小件</button>
-    <button bindtap="medium" class="type1">中件</button>
-    <button bindtap="large" class="type1">大件</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">小件</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">中件</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">大件</button>
     <div class="nav">
       <button class="prev" size="mini" type="default" bindtap="prevStep">上一步</button>
       <button class="end" size="mini" type="default" bindtap="goHome">保存并回到首页</button>
