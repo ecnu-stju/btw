@@ -232,6 +232,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否确认收货？',
+      cancelText:'条码比对',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
@@ -242,7 +243,7 @@ Page({
         } else if (res.cancel) {
           console.log('用户点击取消')
           wx.scanCode({
-            complete: (res) => {
+            success: (res) => {
               setTimeout(() => {
                 wx.showToast({
                   // image: '../../images/warn.png',
