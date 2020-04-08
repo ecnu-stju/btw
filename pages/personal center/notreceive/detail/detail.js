@@ -231,12 +231,12 @@ Page({
     ///
     wx.showModal({
       title: '提示',
-      content: '是否确认收货并抵押0.1积分？',
+      content: '是否确认收货？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
           wx.showToast({
-            image: '../../images/warn.png',
+            image: '../../../../images/warn2.png', 
             title: '收货成功!',
           })
         } else if (res.cancel) {
