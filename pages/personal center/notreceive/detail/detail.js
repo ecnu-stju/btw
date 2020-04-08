@@ -232,6 +232,7 @@ Page({
     wx.showModal({
       title: '提示',
       content: '是否确认收货？',
+      cancelText:'条码比对',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
@@ -241,6 +242,16 @@ Page({
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
+          wx.scanCode({
+            success: (res) => {
+              setTimeout(() => {
+                wx.showToast({
+                  // image: '../../images/warn.png',
+                  title: '条码比对成功!',
+                })
+              }, 500);
+            },
+          })
           // wx.navigateTo({
           //   url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
           // }) //这里不该有，是用于postlist进detail时、传那一单的id
