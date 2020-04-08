@@ -48,7 +48,7 @@
 
 }
 
-.btn1{
+/* .btn1{
   
   font-size:12pt;
   border-radius: 5px;
@@ -65,7 +65,7 @@
   line-height: 60rpx;
   font-weight: bold
 
-}
+} */
 
 
 .btn1{
