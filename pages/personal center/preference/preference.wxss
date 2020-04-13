@@ -56,9 +56,14 @@ page {
   line-height: 60rpx;
 }
 
-.guide .type1::after{
-  border: 1px solid #E3BD4A;
+.guide .btnhover {
+background-color: #E3BD4A;
+border-radius: 1rpx;
 }
+
+/* .guide .type1::after{
+  border: 1px solid #E3BD4A;
+} */
 
 .guide .nav .prev {
   margin-right: unset;

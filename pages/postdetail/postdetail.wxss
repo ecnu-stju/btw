@@ -7,7 +7,7 @@
  padding-right: 25rpx;
  padding-top: 50rpx;
  
-}
+} 
 
 .text{
  width: 100%;
@@ -48,20 +48,28 @@
 
 }
 
-.btn1{
+.btn2{
   
   font-size:12pt;
-  width: 92%;
+  /* width: 92%;
   height:80rpx;
   background-color: #E3BD4A;
   border: 2px solid rgba(141, 68, 32, 0.767);
   color: #444343;
-  font-weight: bold;
+  font-weight: bold; */
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  padding-top: 7rpx;
+  color: #444343;
+  height: 75rpx;
+  background-color: #E3BD4A;
+  border: 2px solid rgba(141, 68, 32, 0.767);
+  line-height: 60rpx;
+  font-weight: bold
 
 }
 

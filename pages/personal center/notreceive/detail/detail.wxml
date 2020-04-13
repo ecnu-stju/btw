@@ -23,12 +23,10 @@
             <text>投递区域：{{detail.full_region}}</text>
         </view>
         <view class='text'>
-            <text>取货码：***（抢单后显示）</text>
-            <!-- {{detail.pickup_code}} -->
+            <text>取货码：{{detail.pickup_code}}</text>
         </view>
         <view class='text'>
-            <text>手机号码：***（抢单后显示）</text>
-            <!-- {{detail.mobile}} -->
+            <text>手机号码：{{detail.mobile}}</text>
         </view>
         <view class='text'>
             <text>详细交接地址：{{detail.address}}</text>
@@ -42,7 +40,7 @@
             </view>
         </view>
       <!-- <view class= 'container'> -->
-        <button bindtap="onClick" class='btn2' >确认抢单</button>
+        <button bindtap="onClick" class='btn3' >确认收货</button>
       <!-- </view> -->
     </view>
     <view style='background: red' wx:if='{{false}}'>数据展示区：浏览数，关注数，评论数等等</view>

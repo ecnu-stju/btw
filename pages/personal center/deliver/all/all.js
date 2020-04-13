@@ -1,7 +1,6 @@
-// 已送达页
-
-import { $wuxFilterBar } from '../../../components/wuxfilterbar';
-const util = require('../../../utils/util.js');
+// pages/posts/posts.js
+import { $wuxFilterBar } from '../../../../components/wuxfilterbar';
+const util = require('../../../../utils/util.js');  
 
 const app = getApp()
 Page({
@@ -10,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
+    /**
+     * items: [
       {
         type: 'filter',
         label: '筛选',
@@ -44,7 +44,7 @@ Page({
               label: '其他',
               value: '6',
             },
-
+            
             ],
           },
           {
@@ -67,7 +67,7 @@ Page({
               label: '19时-22时',
               value: '4',
             },
-
+            
             ],
           },
           {
@@ -86,7 +86,7 @@ Page({
               label: '大件',
               value: '3',
             },
-
+            
             ],
           },
           {
@@ -122,14 +122,14 @@ Page({
         groups: ['001', '002', '003'],//判断元素是否同组
       },
     ],
+    */
 
     postlist: null,
     update: false,// 用于发布动态后的强制刷新标记
     userInfo: {},
     hasUserInfo: false,// 会导致每次加载授权按钮都一闪而过，需要优化
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    status: 2
-
+    page_status: 'deliver'
   },
 
   /**
@@ -139,29 +139,40 @@ Page({
     var that = this
     wx.showLoading({
       title: '加载中',
-    })
-    wx.cloud.init({
-      traceUser: true
-    })
+    }),
+      wx.cloud.init({
+        traceUser: true
+      })
+    // console.log(app.globalData.openId)
+    console.log('加载云函数')
     wx.cloud.callFunction({
       // 云函数名称
       // 如果多次调用则存在冗余问题，应该用一个常量表示。放在哪里合适？
       //待修改云函数（与授权用户id匹配后显示）  模仿get_post_list
       name: 'get_userorder_list2',
-      success: function (res) {   //*res的内容？
+      data: {
+        author_id: app.globalData.openId,
+        user_name: app.globalData.wechatNickName,
+        page_status: this.data.page_status
+      },
+      success: function (res) {   //*
         //提取数据
-        var data = res.result.postlist.data   //还是postlist吗？
-        for (let i = 0; i < data.length; i++) {
-          // console.log(data[i])
-          data[i].update_time = util.formatTime(new Date(data[i].update_time))
+        var self = res.result.userorder_list.data   //还是postlist吗？
+        for (let i = 0; i < self.length; i++) {
+          //console.log(self[i])
+          self[i].update_time = util.formatTime(new Date(self[i].update_time))
         }
         wx.hideLoading()
         that.setData({
-          postlist: data
-        })
-        wx.stopPullDownRefresh()
+          userorder_list: self
+        }),
+          wx.stopPullDownRefresh()
       },
-      fail: console.error
+      fail(res) {
+        console.log(res)
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+      }
     })
   },
 
@@ -169,7 +180,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(1)
+    // 这个工具资瓷日子过滤吗？
+    console.log(getApp().globalData.userInfo)
+
+    wx.startPullDownRefresh()
+    this.refresh()
+
+
+    /**
+     * this.$wuxFilterBar = $wuxFilterBar.init({
+      items: this.data.items,
+      onChange: (checkedItems, items) => {
+        console.log(this, checkedItems, items)
+        const params = {}
+        checkedItems.forEach((n) => {
+          if (n.value === 'filter') {
+            console.log("选中的标题内容为：" + n.value);
+            n.children.filter((n) => n.selected).forEach((n) => {
+              if (n.value === 'query') {
+                console.log("选中的具体内容为：" + n.value);
+
+                const selected = n.children.filter((n) => n.checked).map((n) => n.value).join(' ')
+                params.query = selected;
+                var arr = params.query;
+                var newarr = arr.split(" ");
+                console.log(typeof params.query);
+                console.log("最终选中的内容为：" + newarr);
+              }
+            })
+          }
+        })
+      },
+    })
+    */
+
 
   },
 
@@ -185,7 +229,7 @@ Page({
    */
   onShow: function () {
     var that = this
-    console.log("posts.js - onShow")
+    console.log("deliver.js - onShow")
     if (this.data.update) {
       wx.startPullDownRefresh()
       this.refresh()
@@ -201,6 +245,34 @@ Page({
       },
       fail: function () {
         that.userInfoAuthorize()
+      }
+    })
+  },
+
+  userInfoAuthorize: function () {
+    var that = this
+    console.log('authorize')
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) { // 存储用户信息
+          wx.getUserInfo({
+            success: res => {
+              console.log(res.userInfo.nickName)
+              console.log(util.formatTime(new Date()))
+
+              wx.setStorage({
+                key: app.globalData.userInfo,
+                data: res.userInfo,
+              })
+              app.globalData.wechatNickName = res.userInfo.nickName
+              app.globalData.wechatAvatarUrl = res.userInfo.avatarUrl
+            }
+          })
+        } else { // 跳转到授权页面 
+          wx.navigateTo({
+            url: '/pages/authorize/authorize',
+          })
+        }
       }
     })
   },
@@ -250,7 +322,7 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           wx.navigateTo({
-            url: '../orderdetail/orderdetail?postid=' + e.currentTarget.dataset.postid,
+            url: '../detail/detail?postid=' + e.currentTarget.dataset.postid,
           })
         } else if (res.cancel) {
           console.log('用户点击取消')

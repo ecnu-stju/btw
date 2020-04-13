@@ -1,4 +1,4 @@
-const util = require('../../utils/util.js');  
+const util = require('../../../../utils/util.js');  
 const app = getApp()
 Page({
 
@@ -227,87 +227,34 @@ Page({
 
   },
   onClick: function (e) {
-    var that = this
     // console.log(e.currentTarget.dataset.postid)
     ///
-    var that=this;
     wx.showModal({
       title: '提示',
-      content: '是否确认抢单并抵押0.1积分？',
+      content: '是否确认收货？',
+      cancelText:'条码比对',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
-          
-          wx.cloud.callFunction({
-            // 云函数名称 
-            name: 'add_comment',
-            data: {
-              postid: that.data.detail._id,
-              openid: app.globalData.openId,
-              //原轮子作者埋坑了，本地该值本为undefined，云函数里用的是自动产生的，现已基本将本地坑在postlist页的云函数里集成填了，但仍有缺憾
-              name: app.globalData.wechatNickName,
-              avatarUrl: app.globalData.wechatAvatarUrl,
-              content: "抢单时间标记 \t"+Date.now()
-            },
-            success: function (res) {
-              
-              wx.hideLoading()
-              // this that 很迷
-              that.refreshComment(that.data.postid)
-            }
-          })      
-          //更新状态编号
-          wx.cloud.callFunction({
-            name: 'update_status',
-            data: {
-              postid: that.data.detail._id,
-              deliverer_id: app.globalData.openId
-            },
-            success: function (res) {
-              console.log('更新状态编号成功')
-              // 强制刷新，这个传参很粗暴
-              var pages = getCurrentPages();             //  获取页面栈
-              var prevPage = pages[pages.length - 2];    // 上一个页面
-              prevPage.setData({
-                update: true
-              })
-              wx.showToast({
-                // image: '../../images/warn.png',
-                title: '抢单成功!',
-                duration: 1000,
-                // success
-              })
-              setTimeout(function () {
-              wx.redirectTo({
-                url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
-              })}
-              ,1000)
-              //console.log(that.data.postid)
-            }
+          wx.showToast({
+            image: '../../../../images/warn2.png', 
+            title: '收货成功!',
           })
-          //wx.cloud.callFunction({
-          //  name:'update_status',
-          //  data:{
-          //    postid: that.data.detail._id,
-          //    deliverer_id: app.globalData.openId
-          //  }
-          //})
         } else if (res.cancel) {
           console.log('用户点击取消')
-          {
-            // wx.switchTab({
-            //   url: '/pages/personal center/index/index',
-            //   success: function (res) {
-                // wx.redirectTo({
-                //   url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
-                // })
-              
-            //   }
-            // })
-          }
+          wx.scanCode({
+            success: (res) => {
+              setTimeout(() => {
+                wx.showToast({
+                  // image: '../../images/warn.png',
+                  title: '条码比对成功!',
+                })
+              }, 500);
+            },
+          })
           // wx.navigateTo({
-          //   url: '/pages/personal center/notdeliver/detail/detail?postid=' + that.data.postid,
-          // }) //原本这里不该有，是用于postlist进detail时、传那一单的id，现在也可以需要
+          //   url: '../postlist/postlist?postid=' + e.currentTarget.dataset.postid,
+          // }) //这里不该有，是用于postlist进detail时、传那一单的id
         }
       }
     })

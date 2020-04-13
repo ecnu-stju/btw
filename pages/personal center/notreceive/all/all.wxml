@@ -1,0 +1,44 @@
+<!-- // 个人待收货页 -->
+<!--import src="../../../components/filterbar/filterbar.wxml" /-->
+    <!--这里添加模板：横向导航栏  -->
+ 
+  
+    <!--template is="filterbar" data="{{ ...$wux.filterbar }}" /--> 
+
+<block wx:for="{{userorder_list}}" wx:if="{{ userorder_list.length > 0 }}">
+    <view class="divLine"></view>
+    <!--block不能设置css-->
+    <view class='post_list' bindtap='onItemClick' data-postid='{{item._id}}'>
+        <!--postId会默认转成lowercase-->
+        <view class="profile_info">
+           <!-- <open-data type="userAvatarUrl"></open-data> -->
+           <image src="{{item.author_avatar_url}}" mode="widthFix"></image>
+        </view>
+
+        <view class="row2">
+            <image class="icon-2" src='../../../../images/icon2_1.png'></image>
+            <text class='address'>{{item.address}}</text>
+        </view>
+
+        <view class="row1">
+            <image class="icon-1" src='../../../../images/icon1_1.png'></image>
+            <text class='title'>{{item.content}}</text>
+        </view>
+        
+        <view class="layout_horizontal">        
+            <view class="row3">
+                <image class="icon-3" src='../../../../images/icon3_1.png'></image>
+                <text class='extra_info extra_info_start'>{{item.author_name}}</text>
+            </view>
+            <view class="row4">
+                <image class="icon-4" src='../../../../images/icon4_1.png'></image>
+                <text class='extra_info watch_count'>{{item.watch_count}}</text>
+            </view>
+        </view>
+        
+    </view>
+</block>
+
+<view class="empty-view" wx:if="{{ userorder_list.length <= 0 }}">
+    <text class="text">您没有相关订单</text>
+</view>

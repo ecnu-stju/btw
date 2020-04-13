@@ -5,5 +5,5 @@
     <view class="text-count">0/150</view>
   </view>
 
-  <button class="fb-btn">提交</button>
+  <button class="fb-btn" open-type="feedback">提交</button>
 </view>

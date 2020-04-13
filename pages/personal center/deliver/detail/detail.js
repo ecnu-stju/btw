@@ -1,4 +1,4 @@
-const util = require('../../../utils/util.js');  
+const util = require('../../../../utils/util.js');  
 const app = getApp()
 Page({
 
@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img_url:[],//付款码图,考虑与下面imageUrls直接连通显示？
+    clould_img_id_list: [],
     contentLoaded: false,
     imagesLoaded: false,
     commentLoaded: false,
@@ -36,6 +38,179 @@ Page({
           commentLoaded: true
         })
         that.checkLoadFinish()
+      }
+    })
+  },
+
+  chooseimage: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 3, // 默认9 
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有 
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有 
+      success: function (res) {
+        if (res.tempFilePaths.length > 0) {
+          //图如果满了9张，不显示加图
+          if (res.tempFilePaths.length == 3) {
+            that.setData({
+              hideAdd: 1
+            })
+          } else {
+            that.setData({
+              hideAdd: 0
+            })
+          }
+          //把每次选择的图push进数组
+          let img_url = that.data.img_url;
+          for (let i = 0; i < res.tempFilePaths.length; i++) {
+            if (img_url.length >= 3) {
+              wx.showToast({
+                image: '../../images/warn1.png',
+                title: '图片过多'
+              })
+              that.setData({
+                hideAdd: 1
+              })
+              break
+            }
+            img_url.push(res.tempFilePaths[i])
+          }
+          that.setData({
+            img_url: img_url
+          })
+        }
+      }
+    })
+  },
+
+  publish: function(img_url_ok) {
+    var that = this
+    console.log(that.data.postid);
+    
+    wx.cloud.init({
+      traceUser: true
+    })
+
+    wx.cloud.callFunction({
+      name: 'update_post',
+      data: {
+        payQR:1,
+        postid:that.data.postid,//以下为新发布时所需
+        openid: app.globalData.openId,// 不是直接含在 event 里的？这个云端其实能直接拿到
+        author_name: app.globalData.wechatNickName,
+        author_avatar_url: app.globalData.wechatAvatarUrl,
+        //调用这两个都是用全局变量的
+        content: this.data.content,
+        image_url: img_url_ok,//本地要显示图像，图像是一个链接的形式，链接是可以直接得到的，不用 event 之类的来装
+        //云函数报错能力不佳，实际上下面的参数明显过多偏差了，导致调用失败
+        // // x:'2',
+        // pickup_code: this.data.address.Pickup_code,
+        // id: this.data.address.id,
+        // deliverer_id: this.data.address.deliverer_id,  //增加记录送货者的id
+        // // city_id: this.data.address.city_id,
+        // address: this.data.address.address,
+        // //两个 address 不歧义，第二个 address 是在第一个address 包里面的，外面看不到
+        // // full_region: this.data.address.full_region,
+        // //full_region: this.data.address.blockNum,
+        // blockNum: this.data.address.blockNum,
+        // author_parcel_name: that.data.address.author_parcel_name,
+        // mobile: this.data.address.mobile,
+        // //is_default: this.data.address.is_default,
+        // note: this.data.address.note,
+        // publish_time: "",
+        // update_time: ""//目前让服务器自己生成这两个时间
+      },
+      success: function (res) {
+        wx.hideLoading()//严谨地，前面加个hideload
+        wx.showToast({
+          icon: 'success',
+          title: '上传成功!',//应该加个点5状态？
+          duration: 2000
+        })
+         console.log(res)
+        // 强制刷新，这个传参很粗暴
+        var pages = getCurrentPages();             //  获取页面栈
+        var prevPage = pages[pages.length - 2];    // 上一个页面
+        prevPage.setData({
+          update: true
+        })
+        setTimeout(function (){
+          wx.navigateBack({
+            delta: 1
+          })//此页需要吗？
+        },500)
+      },
+      fail: function(res) {
+        console.log(res)
+        that.publishFail('发布失败')
+      }
+    })
+  },
+  send: function () {
+
+    var that = this;
+
+    wx.showModal({
+      title: '提示',
+      content: '是否确认上传收款码？',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+
+          wx.showLoading({
+            title: '发布中',
+            mask: true
+          })
+
+          let img_url = that.data.img_url;
+          let img_url_ok = [];
+          //由于图片只能一张一张地上传，所以用循环
+          if (img_url.length == 0) {
+            // that.publish([])
+            return
+          }
+          for (let i = 0; i < img_url.length; i++) {
+            var str = img_url[i];
+            var obj = str.lastIndexOf("/");
+            var fileName = str.substr(obj + 1)
+            console.log(fileName)
+            wx.cloud.uploadFile({
+              cloudPath: 'post_images/' + fileName,//必须指定文件名，否则返回的文件id不对
+              filePath: img_url[i], // 小程序临时文件路径
+              success: res => {
+                // get resource ID: 
+                console.log(res)
+                //把上传成功的图片的地址放入数组中
+                img_url_ok.push(res.fileID)
+
+                //如果全部传完，则可以将图片路径保存到数据库
+
+                if (img_url_ok.length == img_url.length) {
+                  console.log(img_url_ok)
+                  that.publish(img_url_ok)
+
+                }
+
+              },
+              fail: err => {
+                // handle error
+                that.publishFail('图片上传失败')
+                console.log('fail: ' + err.errMsg)
+              }
+            })
+          }  
+          
+          // wx.showToast({
+          //   icon: 'success',
+          //   title: '上传成功!',//应该加个点5状态？
+          //   duration: 2000
+          // })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+          // wx.navigateTo({
+          //   url: '../publish/publish?postid=' + e.currentTarget.dataset.postid,
+          // }) //这里不该有，是用于postlist进detail时、传那一单的id
+        }
       }
     })
   },

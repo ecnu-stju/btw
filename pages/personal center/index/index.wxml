@@ -17,19 +17,19 @@
     </view>
 
     <view class="order">
-      <navigator url="/pages/personal center/notreceive/notreceive" class="a">
+      <navigator url="/pages/personal center/notreceive/all/all" class="a">
         <text class="txt">待收货</text>
       </navigator>
     </view>
 
     <view class="order">
-      <navigator url="/pages/personal center/deliver/deliver" class="a">
+      <navigator url="/pages/personal center/deliver/all/all" class="a">
         <text class="txt">已送达</text>
       </navigator>
     </view>
     
     <view class="order">
-      <navigator url="/pages/personal center/notdeliver/notdeliver" class="a">
+      <navigator url="/pages/personal center/notdeliver/all/all" class="a">
         <text class="txt">待送达</text>
       </navigator>
     </view>
@@ -82,7 +82,10 @@
     <view class='title'>请选择认证方式</view>
     <view class='content'>
       <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信企业号认证</button>
-      <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onWechatLogin">人脸认证</button>
+      <navigator url="/pages/personal center/index/faceAuthentication/faceAuthentication" class="a">
+        <button open-type="getUserInfo" lang="zh_CN" >人脸认证</button>
+      </navigator>
+      <!-- bindgetuserinfo="onWechatLogin" -->
     </view>
   </view>
 </view>

@@ -1,0 +1,21 @@
+<view class="root">
+    <camera binderror="error" devicePosition="front" flash="auto">
+        <cover-view class="cover">
+            <cover-view class="hint {{button_active}}">拍照过程中，请保持脸在图示框中</cover-view>
+            <cover-image class="protrait" src="VideoProtrait.png"></cover-image>
+        </cover-view>
+    </camera>
+    <view class="control">
+        <view>
+            <text>请距离摄像头25厘米左右处，直视前方拍摄正脸照</text>
+            <view class="codes">
+                <view class="code-block" wx:for="{{codes}}" wx:for-item="c" wx:key="*this">{{c}}</view>
+            </view>
+        </view>
+        <view bindtap="start" style="position: relative;">
+            <image class="protrait" mode="widthFix" src="{{button_image}}"></image>
+            <text class="timer {{button_active}}" style="font-size: 100%;">{{'开始'}}</text>
+            <!-- timer|| -->
+        </view>
+    </view>
+</view>

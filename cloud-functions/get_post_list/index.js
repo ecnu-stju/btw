@@ -11,7 +11,9 @@ const db = cloud.database({
 exports.main = async (event, context) => {
   return {
     openId: await event.userInfo.openId,
-    postlist: await db.collection('post_collection').field({
+    postlist: await db.collection('post_collection').where({
+      status: 1
+    }).field({
       _id: true,
       address: true,
       author_avatar_url:true,//upload!!

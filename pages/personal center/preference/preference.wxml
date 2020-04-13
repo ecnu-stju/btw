@@ -4,15 +4,16 @@
     <text class="headline">交接区域</text>
     <text class="p">请选择您多数情况下更偏好的快递交接地点</text>
     <!-- 按钮前加个图标或许会好看点 -->
-    <button bindtap="1-6" class="type1">本科生公寓1-6号楼</button>
-    <button bindtap="7-18" class="type1">本科生公寓7-16号楼</button>
-    <button bindtap="19-22" class="type1">本科生公寓19-22号楼</button>
-    <button bindtap="library" class="type1">图书馆</button>
-    <button bindtap=" fashanglou" class="type1">法商楼</button>
-    <button bindtap="others" class="type1">其他</button>
+    <button hover="1-6" class="type1" hover-class="btnhover" hover-stay-time="99999">本科生公寓1-6号楼</button>
+    <button hover="7-18" class="type1" hover-class="btnhover" hover-stay-time="99999">本科生公寓7-16号楼</button>
+    <button hover="19-22" class="type1" hover-class="btnhover" hover-stay-time="99999">本科生公寓19-22号楼</button>
+    <button hover="library" class="type1" hover-class="btnhover" hover-stay-time="99999">图书馆</button>
+    <button hover=" fashanglou" class="type1" hover-class="btnhover" hover-stay-time="99999"> 法商楼</button>
+    <button hover="others" class="type1" hover-class="btnhover" hover-stay-time="99999">其他</button>
+    <!-- <button bindtap="others" class="type1">其他</button> -->
     <div class="nav">
       <button class="next" size="mini"  bindtap="nextStep">下一步</button>
-    </div>
+    </div> 
   </view>
 
   <!-- 交接时间 -->
