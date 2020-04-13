@@ -1,5 +1,6 @@
 // pages/publish/publish.js，发布快递信息
 const app = getApp()
+const pay = require('../../services/pay.js')
 Page({
 
   /**
@@ -159,6 +160,11 @@ Page({
         update_time: ""//目前让服务器自己生成这两个时间
       },
       success: function (res) {
+        let data = {
+          openId: app.globalData.openId,
+        }
+        pay.payOrder(data)
+
         /// console.log("flag2")
         // 强制刷新，这个传参很粗暴
         var pages = getCurrentPages();             //  获取页面栈
@@ -233,7 +239,6 @@ Page({
                 if (img_url_ok.length == img_url.length) {
                   console.log(img_url_ok)
                   that.publish(img_url_ok)
-
                 }
 
               },
