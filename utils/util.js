@@ -161,6 +161,45 @@ function showErrorToast(msg) {
   })
 }
 
+let Operation = {
+  balance_list: ["balance/list", "cloudFunctionName"],
+  balance_change: ["balance/change", "pay_check"]
+}
+
+function makeUrl(operation){
+  let url = "http://127.0.0.1:8360/api/"
+  return url+Operation[operation][0]
+  // let url = operation
+  // url = "https://www.google.com.hk/" // 不翻墙的情况下，测试
+  // return url
+}
+
+function makeName(operation){
+  return Operation[operation][1]
+}
+
+function myrequest(operation, data={}, method) {
+  // operation是个字符串，代表你想干的操作
+  // makeUrl把operation变成url
+  // makeName把operation变成云函数名称
+  // method你加个默认值，不知道你用哪个
+
+  // 向法商楼发送一个不管死活的请求
+  request(makeUrl(operation), data, method).then(res => {
+    console.log("法商楼ok")
+    console.log(res)
+  }).catch(err => {
+    console.log("法商楼gg")
+    console.log(err)
+  })
+  // 这里返回云函数promise
+  return wx.cloud.callFunction({
+    name: makeName(operation),
+    data: data
+  })
+}
+
+
 module.exports = {
   formatTime,
   request,
@@ -171,6 +210,7 @@ module.exports = {
   checkSession,
   login,
   getUserInfo,
+  myrequest
 }
 
 
