@@ -1,6 +1,6 @@
 本项目依照协议使用过以下开源项目成果：
 
-tumobi(tumobi@163.com)（MIT协议，https://github.com/tumobi/nideshop）
+nideshop --by tumobi(tumobi@163.com)（MIT协议，https://github.com/tumobi/nideshop）
 
 wux-weapp（MIT协议，https://github.com/wux-weapp/wux-weapp）
 
