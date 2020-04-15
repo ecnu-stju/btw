@@ -1,9 +1,9 @@
-#援引自开源项目RssHub
-# RssHub
-练手小程序，一个类似同事、脉脉的小程序。
-
-> Note：一开始只是想做个Rss阅读器，所以用了RssHub这个名字。
-
+# 关于知识产权和开源项目使用情况  
+（本项目在确定开源协议之前新增加了私有库分支，依照协议使用过以下开源项目成果：）  
+nideshop-- by tumobi(tumobi@163.com)（MIT协议，https://github.com/tumobi/nideshop）  
+wux-weapp（MIT协议，https://github.com/wux-weapp/wux-weapp）  
+RssHub（https://github.com/vimerzhao/RssHub）：
+（援引自开源项目RssHub：）
 # 预览
 
 # TODO&DONE
