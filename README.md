@@ -1,4 +1,8 @@
-#援引自开源项目RssHub
+本项目依照协议使用过以下开源项目成果：
+tumobi(tumobi@163.com)（MIT协议，https://github.com/tumobi/nideshop）
+wux-weapp（MIT协议，https://github.com/wux-weapp/wux-weapp）
+RssHub（https://github.com/vimerzhao/RssHub）：
+援引自开源项目RssHub：
 # RssHub
 练手小程序，一个类似同事、脉脉的小程序。
 
